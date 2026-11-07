@@ -1,8 +1,8 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const raw = process.env.APP_URL;
-if (!raw) { console.error('Set APP_URL to the final HTTPS origin, for example https://food.example.com'); process.exit(1); }
+const raw = process.env.APP_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
+if (!raw) { console.error('Set APP_URL to the final HTTPS origin, or run this on Vercel with its deployment URL environment variables.'); process.exit(1); }
 const origin = new URL(raw);
 if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('APP_URL must be an HTTPS origin with no path.');
 const base = origin.origin;

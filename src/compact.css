@@ -611,6 +611,108 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .site-shell.moonlight .ingredient-guide-card button{color:#ead0a6;border-color:#7e8979}
 @media(max-width:700px){.cook-mode{margin:12px 0;padding:15px}.cook-mode-head h3{font-size:21px}.cook-mode-tools button{padding:8px;font-size:9px}.cook-ingredients ul{grid-template-columns:1fr}.cook-step-text{min-height:95px;font-size:22px}.cook-timer-row strong{font-size:22px}.cook-mode-launch{align-items:flex-start;flex-wrap:wrap}.cook-mode-launch span{width:100%;margin-left:27px}.modal-links .share-card-button{flex:1 1 100%}}
 
+/* App-like horizontal screen navigation */
+.site-shell{height:100dvh;grid-template-rows:58px minmax(0,1fr) auto}
+.site-shell>main{display:flex;min-width:0;min-height:0;flex-direction:column;overflow:hidden}
+.screen-track{display:flex;flex:1 1 0;width:100%;min-width:0;min-height:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scroll-behavior:smooth}
+.screen-track::-webkit-scrollbar{display:none}
+.app-screen{position:relative;display:block;flex:0 0 100%;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always}
+.screen-welcome{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);background:#f2f0e7}
+.screen-welcome>.hero{width:100%;height:100%;min-height:0}
+.screen-welcome>.intro{display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;max-width:none;margin:0;padding:clamp(28px,6vw,90px);background:#f3f0e6}
+.screen-welcome>.intro h2{max-width:600px;font-size:clamp(39px,5.5vw,82px);line-height:1.02}
+.screen-welcome>.intro p{max-width:380px;font-size:clamp(13px,1.3vw,18px);line-height:1.7}
+.screen-explore>.explore{width:100%;height:100%;min-width:0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:clamp(14px,2vh,26px) clamp(18px,5vw,78px) 22px}
+.screen-explore .story-grid{flex:0 0 auto}
+.screen-table{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);align-content:center;gap:clamp(16px,3vw,34px);padding:clamp(24px,5vh,58px) clamp(20px,7vw,110px);background:radial-gradient(ellipse at 50% 0%,#e7dfc7 0,transparent 55%),#f2f0e7}
+.screen-heading{grid-column:1/-1;max-width:740px;margin:0 auto clamp(4px,1vh,14px);text-align:center}
+.screen-heading h2{margin:8px 0;font:500 clamp(36px,5vw,68px)/.98 'Playfair Display',Georgia,serif;letter-spacing:-.045em;color:#304638}
+.screen-heading h2 em{color:#b56343;font-style:normal}
+.screen-heading p{max-width:550px;margin:0 auto;color:#647064;font-size:clamp(11px,1.1vw,14px);line-height:1.6}
+.screen-table .meal-teaser,.screen-table .grocery-teaser{align-self:stretch;width:100%;max-width:none;min-width:0;margin:0;padding:clamp(17px,2.8vw,34px);border-radius:8px}
+.screen-table .meal-teaser{display:grid;grid-template-columns:100px minmax(0,1fr);gap:18px}
+.screen-table .meal-teaser-art{height:100px}
+.screen-table .meal-teaser>button{grid-column:2;justify-self:start}
+.screen-table .grocery-teaser{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:18px}
+.screen-table .grocery-teaser button{margin-top:auto}
+.screen-pantry{padding:clamp(16px,3vh,32px) clamp(18px,5vw,75px);background:#f5f2e9}
+.screen-pantry>.ingredient-guide{width:100%;height:100%;max-width:1400px;margin:0 auto;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.screen-pantry .ingredient-guide-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.screen-pantry .ingredient-guide-card{min-height:0}
+.screen-about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(240px,.8fr);align-items:center;gap:clamp(24px,7vw,100px);padding:clamp(25px,6vw,90px);background:linear-gradient(135deg,#e9e8dc,#f5f2e8 62%,#e9eee4)}
+.screen-about>.note-section{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;width:auto;margin:0;padding:0;background:transparent}
+.screen-about .note-section>p{grid-column:2;max-width:620px;font-size:clamp(12px,1.2vw,16px);line-height:1.8}
+.about-screen-note{max-width:440px;padding:clamp(20px,4vw,40px);border:1px solid #d0d5c9;border-radius:8px;background:#f8f7ef}
+.about-screen-note .eyebrow{color:#a35b3c;font-size:9px;letter-spacing:.14em}
+.about-screen-note p{color:#59675a;font:500 clamp(19px,2.5vw,30px)/1.45 'Playfair Display',Georgia,serif}
+.about-screen-note button{padding:10px 14px;border:1px solid #b9c4b6;border-radius:3px;background:#e8eee5;color:#39523f;font-size:10px;font-weight:700}
+.about-screen-note button+button{margin-left:7px}
+.screen-nav button:focus-visible,.about-screen-note button:focus-visible{outline:2px solid #b36544;outline-offset:2px}
+.screen-nav{display:flex;flex:none;align-items:center;justify-content:center;gap:clamp(8px,2vw,20px);height:46px;padding:4px 12px;background:#f4f1e8;border-top:1px solid #d8d9ce;color:#405143}
+.screen-tabs{display:flex;align-items:center;justify-content:center;gap:5px}
+.screen-tabs button{display:flex;align-items:center;gap:7px;min-height:31px;padding:5px 11px;border:1px solid transparent;border-radius:18px;background:transparent;color:#6f796c;font-size:9px;font-weight:700;cursor:pointer}
+.screen-tabs button i{font-size:7px;font-style:normal;opacity:.65}
+.screen-tabs button[aria-current="page"]{border-color:#c5d0c2;background:#e5ebe1;color:#304a39}
+.screen-tabs button[aria-current="page"] i{color:#a25d3e;opacity:1}
+.screen-arrow{width:29px;height:29px;border:1px solid #c5cbbf;border-radius:50%;background:transparent;color:#405443;font-size:16px;line-height:1}
+.screen-arrow:disabled{opacity:.32}
+.screen-count{min-width:40px;color:#788274;font-size:8px;font-weight:700;letter-spacing:.12em;text-align:center}
+.screen-count i{padding:0 3px;color:#bd7654;font-style:normal}
+.site-shell.moonlight .screen-welcome,.site-shell.moonlight .screen-welcome>.intro,.site-shell.moonlight .screen-pantry{background:#35474a}
+.site-shell.moonlight .screen-welcome>.intro h2,.site-shell.moonlight .screen-heading h2{color:#f0ecdf}
+.site-shell.moonlight .screen-welcome>.intro p,.site-shell.moonlight .screen-heading p{color:#cbd4c9}
+.site-shell.moonlight .screen-table{background:radial-gradient(ellipse at 50% 0%,#5a594a 0,transparent 55%),#34464a}
+.site-shell.moonlight .screen-about{background:linear-gradient(135deg,#344449,#3c4d4c 65%,#36494a)}
+.site-shell.moonlight .about-screen-note{background:#3e504d;border-color:#68796e}
+.site-shell.moonlight .about-screen-note p{color:#f1ecdf}
+.site-shell.moonlight .about-screen-note button{background:#43564e;border-color:#718075;color:#f0ecdf}
+.site-shell.moonlight .screen-nav{background:#2d3d42;border-color:#586860;color:#f0ecdf}
+.site-shell.moonlight .screen-tabs button{color:#c7d0c5}
+.site-shell.moonlight .screen-tabs button[aria-current="page"]{background:#40534c;border-color:#718075;color:#f0ecdf}
+.site-shell.moonlight .screen-arrow{border-color:#718075;color:#f0ecdf}
+@media(max-width:700px){
+ .site-shell{grid-template-rows:52px minmax(0,1fr) auto}
+ .site-shell>main{display:flex;min-height:0}
+ .screen-welcome{display:block}
+ .screen-welcome>.hero{height:100%;min-height:0}
+ .screen-welcome>.intro{display:none}
+ .screen-explore>.explore{padding:10px 4% 14px}
+ .screen-table{grid-template-columns:1fr;grid-template-rows:auto auto auto;align-content:center;gap:12px;padding:16px 5%}
+ .screen-heading{margin:0 auto 3px}
+ .screen-heading h2{font-size:clamp(30px,8vw,42px)}
+ .screen-heading p{max-width:300px;font-size:9px}
+ .screen-table .meal-teaser,.screen-table .grocery-teaser{padding:13px;gap:9px}
+ .screen-table .meal-teaser{grid-template-columns:58px minmax(0,1fr);align-items:center}
+ .screen-table .meal-teaser-art{height:58px}
+ .screen-table .meal-teaser>button{grid-column:1/-1;justify-self:stretch;padding:9px}
+ .screen-table .grocery-teaser{flex-direction:row;align-items:center;justify-content:space-between}
+ .screen-table .grocery-teaser button{flex:none;margin-top:0;padding:9px;font-size:8px}
+ .screen-table .grocery-teaser p{max-width:230px;font-size:8px}
+ .screen-pantry{padding:12px 4%}
+ .screen-pantry .ingredient-guide{margin:0}
+ .screen-pantry .ingredient-guide>h3{margin:4px 0;font-size:27px}
+ .screen-pantry .ingredient-guide>p{margin:4px 0 8px;font-size:8px}
+ .screen-pantry .ingredient-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:8px}
+ .screen-pantry .ingredient-guide-card{padding:10px}
+ .screen-pantry .ingredient-guide-card h4{margin:5px 0;font-size:14px}
+ .screen-pantry .ingredient-guide-card p{margin-bottom:5px;font-size:7px;line-height:1.35}
+ .screen-pantry .ingredient-guide-card button,.screen-pantry .ingredient-guide-card a{font-size:7px}
+ .screen-about{grid-template-columns:1fr;align-content:center;gap:16px;padding:20px 7%}
+ .screen-about>.note-section{grid-template-columns:auto minmax(0,1fr);gap:10px}
+ .screen-about .note-section h2{font-size:clamp(25px,7vw,38px)}
+ .screen-about .note-section>p{font-size:9px;line-height:1.5}
+ .about-screen-note{max-width:none;padding:14px}
+ .about-screen-note p{margin:8px 0;font-size:17px}
+ .about-screen-note button{margin:4px 0;padding:8px 9px;font-size:8px}
+ .screen-nav{height:43px;gap:4px;padding:3px 5px}
+ .screen-tabs{gap:0;flex:1;justify-content:space-around}
+ .screen-tabs button{flex-direction:column;justify-content:center;gap:1px;min-width:45px;min-height:34px;padding:3px 5px;font-size:7px}
+ .screen-tabs button i{font-size:6px}
+ .screen-arrow{flex:none;width:25px;height:25px;font-size:14px}
+ .screen-count{min-width:29px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){.screen-track{scroll-behavior:auto}}
+
 /* Give the editorial panel a quiet coastal graphic while keeping recipe cards easy to scan. */
 @media(min-width:701px){
  main>.intro{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#f5f2e9 0%,#eff1e7 100%)}

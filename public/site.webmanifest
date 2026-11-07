@@ -1,7 +1,7 @@
 {
-  "name": "Shore & Season — Native Foodways Atlas",
+  "name": "Shore & Season",
   "short_name": "Shore & Season",
-  "description": "Explore Native foodways along the East Coast.",
+  "description": "Explore Native recipes and foodways from Florida through the East Coast and Great Lakes.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

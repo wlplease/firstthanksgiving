@@ -1,19 +1,21 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const raw = process.env.APP_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
-if (!raw) { console.error('Set APP_URL to the final HTTPS origin, or run this on Vercel with its deployment URL environment variables.'); process.exit(1); }
+const raw = process.env.APP_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'https://shoreseason.vercel.app');
 const origin = new URL(raw);
 if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('APP_URL must be an HTTPS origin with no path.');
 const base = origin.origin;
-const association = process.env.FARCASTER_ACCOUNT_ASSOCIATION ? JSON.parse(process.env.FARCASTER_ACCOUNT_ASSOCIATION) : null;
-if (!association || !['header','payload','signature'].every(key => typeof association[key] === 'string' && association[key])) throw new Error('Set FARCASTER_ACCOUNT_ASSOCIATION to the signed JSON from Farcaster Developer Tools.');
+let association = null;
+if (process.env.FARCASTER_ACCOUNT_ASSOCIATION) {
+  try { association = JSON.parse(process.env.FARCASTER_ACCOUNT_ASSOCIATION); }
+  catch { throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must be valid JSON from Farcaster Developer Tools.'); }
+  if (!association || !['header','payload','signature'].every(key => typeof association[key] === 'string' && association[key])) throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must contain the signed header, payload, and signature from Farcaster Developer Tools.');
+}
 const manifest = {
-  accountAssociation: association,
   miniapp: {
     version: '1', name: 'Shore & Season', homeUrl: base,
     iconUrl: `${base}/icon.png`, splashImageUrl: `${base}/splash.png`, splashBackgroundColor: '#d9ded2',
-    subtitle: 'Native foodways & recipes',
+    subtitle: 'Native foodways and recipes',
     description: 'Explore Native recipes and living foodways from Florida to the Great Lakes.',
     primaryCategory: 'education', tags: ['food','history','culture'],
     heroImageUrl: `${base}/hero.png`, ogTitle: 'Shore & Season',
@@ -21,11 +23,12 @@ const manifest = {
     supportsFullScreen: true
   }
 };
+if (association) manifest.accountAssociation = association;
 const embed = {version:'1',imageUrl:`${base}/embed.png`,button:{title:'Explore foodways',action:{type:'launch_miniapp',name:'Shore & Season',splashImageUrl:`${base}/splash.png`,splashBackgroundColor:'#d9ded2'}}};
 const file = resolve('dist/index.html');
 let html = await readFile(file,'utf8');
 const tag = json => JSON.stringify(json).replaceAll('&','&amp;').replaceAll("'",'&#39;').replaceAll('<','&lt;');
-html = html.replace('</head>', `<meta property="og:title" content="Shore & Season"/><meta property="og:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta property="og:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/><meta name="fc:frame" content='${tag({...embed,button:{...embed.button,action:{...embed.button.action,type:'launch_frame'}}})}'/></head>`);
+html = html.replace('</head>', `<meta property="og:type" content="website"/><meta property="og:site_name" content="Shore & Season"/><meta property="og:title" content="Shore & Season"/><meta property="og:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta property="og:image" content="${base}/hero.png"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Shore & Season"/><meta name="twitter:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta name="twitter:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/><meta name="fc:frame" content='${tag({...embed,button:{...embed.button,action:{...embed.button.action,type:'launch_frame'}}})}'/></head>`);
 await writeFile(file,html);
 await mkdir(resolve('dist/.well-known'),{recursive:true});
 await writeFile(resolve('dist/.well-known/farcaster.json'),JSON.stringify(manifest,null,2));

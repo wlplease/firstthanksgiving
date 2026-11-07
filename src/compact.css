@@ -970,6 +970,8 @@ body.moonlight-page .roots-key-dialog>h2,body.moonlight-page .roots-timeline h3{
 body.moonlight-page .roots-key-dialog>p,body.moonlight-page .roots-timeline article p,body.moonlight-page .roots-living p{color:#d0d8ce}
 body.moonlight-page .roots-timeline article{background:#3e504d;border-color:#68796e}
 body.moonlight-page .roots-living{background:#3d4d49}
+body.moonlight-page .roots-timeline article a,body.moonlight-page .roots-living a{color:#e3b782}
+body.moonlight-page .ingredient-guide-card a{color:#e3b782}
 body.moonlight-page .regional-roots{background:#3e504d;border-color:#68796e}
 body.moonlight-page .regional-roots-label{color:#f0ecdf}
 body.moonlight-page .regional-roots p,body.moonlight-page .history-note>p{color:#d0d8ce}
@@ -1331,3 +1333,45 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .site-shell.moonlight .about-actions button{border-color:#748171;background:#43564e;color:#f0ecdf}
 .site-shell.moonlight .about-actions button:first-child{border-color:#c17a51;background:#c17a51;color:#fff7e8}
 @media(max-width:760px){.screen-about{padding:16px 4% calc(20px + env(safe-area-inset-bottom,0px))}.screen-about>.note-section{grid-template-columns:38px minmax(0,1fr);gap:9px 12px;margin-bottom:18px;padding:16px;border-radius:9px}.screen-about .note-symbol{width:34px;height:34px;font-size:21px}.screen-about .note-section h2{font-size:clamp(24px,7vw,34px)}.screen-about .note-section>p{grid-column:2;font-size:10px;line-height:1.5}.about-reading-key,.about-care-band{margin-bottom:20px}.about-section-heading{margin-bottom:10px}.about-section-heading h3,.about-care-band h3{font-size:25px}.about-section-heading p,.about-care-band p{font-size:10px}.about-key-grid{grid-template-columns:1fr;gap:8px}.about-key-card{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:10px;min-height:0;padding:12px 13px}.about-key-card:before{left:12px;right:12px}.about-key-mark{grid-column:1;grid-row:1/4;width:30px;height:30px;margin:1px 0 0}.about-key-label{grid-column:2;grid-row:1;font-size:7px}.about-key-card h4{grid-column:2;grid-row:2;margin:4px 0;font-size:17px}.about-key-card p{grid-column:2;grid-row:3;font-size:9px}.about-care-band{grid-template-columns:1fr;gap:13px;padding:13px;border-radius:9px}.about-care-art{min-height:102px}.about-care-art span{font-size:44px}.about-actions{gap:6px;margin-top:12px}.about-actions button{flex:1 1 145px;min-height:38px;font-size:8px}}
+
+/* Tighter first-screen composition: smaller hero and recipe cards without clipping copy. */
+.shared-app-hero{height:clamp(128px,17vh,178px)}
+.screen-welcome .story-grid{grid-auto-rows:minmax(clamp(185px,27vh,230px),auto)}
+.screen-welcome .story-card{padding:7px 10px 6px}
+.screen-welcome .story-card>.card-art{width:min(100%,92px)}
+.screen-welcome .story-card>.card-art .art-symbol{font-size:clamp(32px,4.5vw,52px)}
+.screen-welcome .story-card .card-body>.eyebrow{font-size:clamp(6px,.7vw,8px);line-height:1.2}
+.screen-welcome .story-card .card-body>strong{font-size:clamp(16px,1.8vw,24px);line-height:1.08;margin:2px 6px 4px}
+.screen-welcome .recipe-story-card .card-description{font-size:clamp(9px,.82vw,10.5px);line-height:1.34;margin:3px 0 2px}
+.screen-welcome .recipe-story-card .recipe-card-quick{font-size:8px;line-height:1.25}
+.screen-welcome .recipe-story-card .recipe-card-quick b{font-size:7px}
+.screen-welcome .recipe-story-card .recipe-card-ingredients{font-size:8px;line-height:1.25}
+.screen-welcome .recipe-story-card .recipe-card-source{font-size:7px;line-height:1.25}
+.screen-welcome .recipe-story-card .card-bottom{min-height:16px;padding-top:3px;font-size:7px}
+@media(max-width:700px){
+ .shared-app-hero{height:clamp(84px,12vh,100px)}
+ .screen-welcome .story-grid{grid-auto-rows:minmax(clamp(178px,27vh,215px),auto)}
+ .screen-welcome .story-card{padding:6px 8px 5px}
+ .screen-welcome .story-card>.card-art{width:min(100%,78px)}
+ .screen-welcome .story-card>.card-art .art-symbol{font-size:36px}
+ .screen-welcome .story-card .card-body>.eyebrow{font-size:6px;line-height:1.15}
+ .screen-welcome .story-card .card-body>strong{font-size:clamp(15px,4.3vw,19px);line-height:1.05;margin:2px 5px 3px}
+ .screen-welcome .recipe-story-card .card-description{font-size:9px;line-height:1.28}
+ .screen-welcome .recipe-story-card .recipe-card-quick,.screen-welcome .recipe-story-card .recipe-card-ingredients{font-size:7px}
+ .screen-welcome .recipe-story-card .recipe-card-source,.screen-welcome .recipe-story-card .card-bottom{font-size:6px}
+}
+@media(max-height:620px) and (max-width:700px){.shared-app-hero{height:80px}.screen-welcome .story-grid{grid-auto-rows:minmax(164px,auto)}}
+
+/* Illustrated, source-first trail map: progress marks are descriptive, never scored. */
+.walkthrough-map-line{position:absolute;z-index:2;inset:7% 5% 11%;width:90%;height:82%;overflow:visible;pointer-events:none}
+.walkthrough-map-line path{fill:none;stroke:#fff4d8b8;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 5}
+.walkthrough-map-line .walkthrough-map-line-glow{stroke:#f2c886;stroke-width:2.5;stroke-dasharray:24 280;animation:field-route-glow 4.8s ease-in-out infinite}
+.walkthrough-map-line circle{fill:#f5ead0;stroke:#355044;stroke-width:2}
+.walkthrough-map-line circle.reached{fill:#9ab28a;stroke:#f5ead0}
+.walkthrough-map-line circle.current{fill:#f0c37e;stroke:#fff7e4;stroke-width:3;filter:drop-shadow(0 0 5px #fff2c9)}
+@keyframes field-route-glow{from{stroke-dashoffset:300;opacity:.2}50%{opacity:1}to{stroke-dashoffset:0;opacity:.35}}
+.walkthrough-map-stamp{box-shadow:0 8px 25px #10261c40,0 0 0 1px #fff1d422;animation:field-stamp-arrive .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes field-stamp-arrive{from{opacity:0;transform:translateY(6px) rotate(-2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+.walkthrough-route li.current>span{animation:route-pin-breathe 2.8s ease-in-out infinite}
+@keyframes route-pin-breathe{0%,100%{box-shadow:0 0 0 3px #b8674316}50%{box-shadow:0 0 0 6px #b867432b}}
+@media(prefers-reduced-motion:reduce){.walkthrough-map-line-glow,.walkthrough-map-stamp,.walkthrough-route li.current>span{animation:none!important}}

@@ -38,6 +38,51 @@ const clips = [
     ]
   },
   {
+    file: 'field-notes-florida.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, thoughtful] Begin in Florida, where Seminole sources describe sofkee, pumpkin gardens, citrus, and foods shaped by this peninsula.'),
+      turn(maleVoice, '[calm, measured] On the First Coast, Timucua history around Seloy connects cultivated fields with river and coastal foods.'),
+      turn(femaleVoice, '[respectful] These are distinct peoples and living histories. The exact menu of the 1565 meal is unknown.'),
+      turn(maleVoice, '[inviting] Choose one food thread, then follow it to the source.')
+    ]
+  },
+  {
+    file: 'field-notes-southeast.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, clear] In western North Carolina, Eastern Band of Cherokee Indians foodways and Tribal Foods share contemporary recipes.'),
+      turn(maleVoice, '[thoughtful] Muscogee community food traditions belong to another distinct place and people.'),
+      turn(femaleVoice, '[measured] Three Sisters foods appear across many communities; there is no single universal recipe.'),
+      turn(maleVoice, '[gentle] Open each story with its own source and context.')
+    ]
+  },
+  {
+    file: 'field-notes-midatlantic.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, reflective] Follow the Chesapeake waters and Tidewater rivers through a region of distinct Native homelands.'),
+      turn(maleVoice, '[clear] Nanticoke and Powhatan stories each carry their own community and place.'),
+      turn(femaleVoice, '[respectful] A source may describe foods without preserving a recipe; modern adaptations are labeled as new ideas.'),
+      turn(maleVoice, '[inviting] Choose a river or garden food, then follow the story back to its publisher.')
+    ]
+  },
+  {
+    file: 'field-notes-northeast.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, thoughtful] From Sipayik in Maine to Southern New England, every shoreline holds distinct Native communities and food knowledge.'),
+      turn(maleVoice, '[calm] Wampanoag, Mohegan, Narragansett, and Passamaquoddy sources speak from their own places.'),
+      turn(femaleVoice, '[gentle] Community recipes and historical food descriptions each tell us something different.'),
+      turn(maleVoice, '[inviting] Follow one ingredient to its source, then see how it enters today’s kitchen.')
+    ]
+  },
+  {
+    file: 'field-notes-greatlakes.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, clear] In Wisconsin homelands, Oneida Nation sources share local corn, wild rice, and seasonal foods.'),
+      turn(maleVoice, '[thoughtful] Brothertown recipes and regional collections are labeled separately, each with its own source.'),
+      turn(femaleVoice, '[respectful] This trail is not one menu for all Great Lakes peoples.'),
+      turn(maleVoice, '[inviting] Let a recipe lead you back to the community that shared it.')
+    ]
+  },
+  {
     file: 'st-augustine-1565.mp3',
     inputs: [
       turn(femaleVoice, '[measured, reflective] In September 1565, Spanish colonists held a Mass of thanksgiving at St. Augustine, in Timucua homeland.'),
@@ -68,9 +113,11 @@ const clips = [
 
 const output = resolve('public/audio');
 await mkdir(output, { recursive: true });
-const requestedFile = process.argv[2];
-const clipsToGenerate = requestedFile ? clips.filter(clip => clip.file === requestedFile) : clips;
-if (!clipsToGenerate.length) throw new Error(`No voice clip configured for ${requestedFile}.`);
+const requestedFiles = process.argv.slice(2);
+const clipsToGenerate = requestedFiles.length ? clips.filter(clip => requestedFiles.includes(clip.file)) : clips;
+const missingFiles = requestedFiles.filter(file => !clips.some(clip => clip.file === file));
+if (missingFiles.length) throw new Error(`No voice clip configured for ${missingFiles.join(', ')}.`);
+if (!clipsToGenerate.length) throw new Error('No voice clips were selected.');
 for (const clip of clipsToGenerate) {
   const response = await fetch('https://api.elevenlabs.io/v1/text-to-dialogue?output_format=mp3_44100_128', {
     method: 'POST',

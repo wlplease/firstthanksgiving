@@ -1,6 +1,10 @@
 import './style.css';
 import './compact.css';
 import { inject as injectVercelAnalytics, pageview as recordVercelPageView } from '@vercel/analytics';
+import { App } from '@capacitor/app';
+import { Browser } from '@capacitor/browser';
+import { Capacitor } from '@capacitor/core';
+import { Share } from '@capacitor/share';
 import { regions, stories, placeAliases, storyLore, regionalRoots, thanksgivingRoots } from './data.js';
 import { mealPlans } from './meal-plans.js';
 
@@ -95,6 +99,7 @@ const soundtrackTracks = [
   {id:'marsh-to-shore',title:'From Marsh to Shore',creator:'sunsetsandsfun',songId:'020d9e14-4c01-49d2-8cd1-57e7b7f7c86e',shareUrl:'https://suno.com/s/kGSZJrkhRLvIFGqH'},
   {id:'shoreline-ambience',title:'shoreline ambience',creator:'sunsetsandsfun',songId:'e5c241cc-925e-4c1a-9eef-74baba4f83d6',shareUrl:'https://suno.com/s/kvOhKTXmi0xq7W1U'}
 ];
+try{currentTrackIndex=Math.max(0,Math.min(soundtrackTracks.length-1,Number(localStorage.getItem('shore-season-track-index'))||0));}catch{}
 const heroSlides = [
   {kicker:'FLORIDA · SEMINOLE FOODWAYS',title:'From Florida<br><em>to the coast.</em>',description:'Explore Florida ingredients, recipes, and living food traditions.',image:'/florida-foodways.webp',alt:'Illustrated Florida wetlands and seasonal foods'},
   {kicker:'PATUXET · WAMPANOAG COUNTRY',title:'Stories from<br><em>Patuxet.</em>',description:'Meet regional recipes and the people and places behind them.',image:'/northeast-foodways.webp',alt:'Illustrated Northeast coast and harvest foods'},
@@ -469,15 +474,18 @@ function syncMusicDock(){
   let dock=document.querySelector('#music-dock');
   if(!dock){
     dock=document.createElement('section');dock.id='music-dock';dock.className='music-dock';dock.setAttribute('aria-label','Shore & Season background music player');
-    dock.innerHTML=`<div class="music-dock-bar"><span class="music-dock-mark">♫</span><div class="music-dock-current"><span>SHORE & SEASON RADIO</span><strong id="music-dock-track"></strong><span id="music-dock-creator"></span></div><button id="music-dock-toggle" type="button" aria-expanded="false">Expand</button></div><div class="music-dock-panel" id="music-dock-panel"><div class="music-dock-heading"><div><span class="eyebrow">BACKGROUND SOUNDTRACK</span><h2>Listen as you explore.</h2></div><button id="music-dock-minimize" type="button" aria-label="Minimize playlist; playback continues">Minimize</button></div><div class="music-dock-player"><iframe id="suno-player" title="Suno music player" allow="autoplay; encrypted-media" loading="eager"></iframe><div class="music-dock-links"><a id="music-dock-suno" href="#" target="_blank" rel="noopener noreferrer">Open track on Suno ↗</a><span>Tap play; audio continues while you browse.</span></div></div><div class="music-queue-heading"><span>PLAYLIST</span><span id="music-queue-count"></span></div><div id="music-queue" class="music-queue"></div><p class="music-queue-note">More tracks can be added here as they’re ready.</p></div>`;
+    dock.innerHTML=`<div class="music-dock-bar"><span class="music-dock-mark">♫</span><div class="music-dock-current"><span>SHORE & SEASON RADIO</span><strong id="music-dock-track"></strong><span id="music-dock-creator"></span></div><button id="music-dock-toggle" type="button" aria-expanded="false">Expand</button></div><div class="music-dock-panel" id="music-dock-panel"><div class="music-dock-heading"><div><span class="eyebrow">BACKGROUND SOUNDTRACK</span><h2>Listen as you explore.</h2></div><button id="music-dock-minimize" type="button" aria-label="Minimize playlist; playback continues">Minimize</button></div><div class="music-dock-player"><iframe id="suno-player" title="Suno music player" allow="autoplay; encrypted-media" loading="eager"></iframe><div class="music-dock-links"><a id="music-dock-suno" href="#" target="_blank" rel="noopener noreferrer">Open track on Suno ↗</a><span>Playback stays open as you browse.</span></div><div class="music-playback-controls"><button id="music-previous" type="button" aria-label="Load previous track">← Previous</button><button id="music-next" type="button" aria-label="Load next track">Next →</button></div></div><div class="music-queue-heading"><span>TRACKS</span><span id="music-queue-count"></span></div><div id="music-queue" class="music-queue"></div><p class="music-queue-note">Choose a track, then press play in the Suno player. Suno controls playback.</p></div>`;
      document.querySelector('#footer-music-slot')?.appendChild(dock);
     dock.querySelector('#music-dock-toggle').addEventListener('click',()=>{musicOpen=!musicOpen;syncMusicDock();});
     dock.querySelector('#music-dock-minimize').addEventListener('click',()=>{musicOpen=false;syncMusicDock();document.querySelector('#music-open')?.focus();});
+    dock.querySelector('#music-previous').addEventListener('click',()=>{currentTrackIndex=(currentTrackIndex+soundtrackTracks.length-1)%soundtrackTracks.length;syncMusicDock();});
+    dock.querySelector('#music-next').addEventListener('click',()=>{currentTrackIndex=(currentTrackIndex+1)%soundtrackTracks.length;syncMusicDock();});
     const queue=dock.querySelector('#music-queue');
     soundtrackTracks.forEach((track,index)=>{const button=document.createElement('button');button.type='button';button.className='music-track';button.dataset.trackIndex=String(index);button.textContent=`${String(index+1).padStart(2,'0')} · ${track.title}`;button.addEventListener('click',()=>{if(currentTrackIndex!==index){currentTrackIndex=index;syncMusicDock();}});queue.appendChild(button);});
   }
+  try{localStorage.setItem('shore-season-track-index',String(currentTrackIndex));}catch{}
   const track=soundtrackTracks[currentTrackIndex]||soundtrackTracks[0];
-  if(musicOpen&&dock.dataset.songId!==track.songId){dock.dataset.songId=track.songId;const player=dock.querySelector('#suno-player');player.src=`https://suno.com/embed/${track.songId}`;player.title=`Play ${track.title} by ${track.creator} on Suno`;}
+  if(dock.dataset.songId!==track.songId){dock.dataset.songId=track.songId;const player=dock.querySelector('#suno-player');player.src=`https://suno.com/embed/${track.songId}`;player.title=`Play ${track.title} by ${track.creator} on Suno`;}
   dock.classList.add('ready');
   dock.classList.toggle('expanded',musicOpen);
   const slot=dock.closest('.footer-music-slot');
@@ -545,6 +553,7 @@ async function copyShareText(text){
 }
 async function openShareTarget(url){
   if(inMiniApp&&sdkInstance?.actions?.openUrl)return sdkInstance.actions.openUrl({url});
+  if(Capacitor.isNativePlatform()&&/^https?:/.test(url))return Browser.open({url});
   const opened=window.open(url,'_blank');
   if(!opened)throw new Error('The share window was blocked.');
   opened.opener=null;
@@ -556,7 +565,8 @@ async function share(kind){
       if(inMiniApp&&sdkInstance?.actions?.composeCast)await sdkInstance.actions.composeCast({text,embeds:[url]});
       else await openShareTarget(`https://farcaster.xyz/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(url)}`);
     }else if(kind==='native'){
-      if(navigator.share)await navigator.share({title,text,url});
+      if(Capacitor.isNativePlatform())await Share.share({title,text,url,dialogTitle:'Share Shore & Season'});
+      else if(navigator.share)await navigator.share({title,text,url});
       else if(await copyShareText(`${text}\n\n${url}`)){if(status)status.textContent='Invite copied. Paste it into any app to share.';return;}
       else throw new Error('Clipboard unavailable');
     }else if(kind==='x'){
@@ -680,7 +690,7 @@ function bind() {
   document.querySelector('#modal-close')?.addEventListener('click',closeModal); document.querySelector('#modal-backdrop')?.addEventListener('click',e=>{if(e.target.id==='modal-backdrop')closeModal();});
 }
 function closeModal(){const closingStory=selected;selected=null;cookModeStory=null;stopCookTimer();cookTimerSeconds=0;void releaseCookWakeLock();const url=new URL(location.href);url.searchParams.delete('story');history.replaceState(null,'',url);render();if(closingStory)document.querySelector(`[data-story="${closingStory}"]`)?.focus();}
-document.addEventListener('click',event=>{const screenTab=event.target.closest('[data-screen-go]');if(screenTab){event.preventDefault();goToScreen(Number(screenTab.dataset.screenGo));return;}const screenStep=event.target.closest('[data-screen-step]');if(screenStep){event.preventDefault();goToScreen(activeScreenIndex+Number(screenStep.dataset.screenStep));return;}const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||link.hasAttribute('download'))return;const target=new URL(link.href,location.href);if((target.protocol==='https:'||target.protocol==='http:')&&target.origin!==location.origin){if(link.classList.contains('external-source-direct')){if(inMiniApp&&sdkInstance?.actions?.openUrl){event.preventDefault();try{Promise.resolve(sdkInstance.actions.openUrl({url:target.href})).catch(()=>{});}catch{}}return;}if(link.classList.contains('source-browser-open'))return;event.preventDefault();openSourceWindow(target.href,link.textContent.trim());}},true);
+document.addEventListener('click',event=>{const screenTab=event.target.closest('[data-screen-go]');if(screenTab){event.preventDefault();goToScreen(Number(screenTab.dataset.screenGo));return;}const screenStep=event.target.closest('[data-screen-step]');if(screenStep){event.preventDefault();goToScreen(activeScreenIndex+Number(screenStep.dataset.screenStep));return;}const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||link.hasAttribute('download'))return;const target=new URL(link.href,location.href);if((target.protocol==='https:'||target.protocol==='http:')&&target.origin!==location.origin){if(link.classList.contains('external-source-direct')){if(inMiniApp&&sdkInstance?.actions?.openUrl){event.preventDefault();try{Promise.resolve(sdkInstance.actions.openUrl({url:target.href})).catch(()=>{});}catch{}}else if(Capacitor.isNativePlatform()){event.preventDefault();void Browser.open({url:target.href});}return;}if(link.classList.contains('source-browser-open'))return;event.preventDefault();openSourceWindow(target.href,link.textContent.trim());}},true);
 document.addEventListener('keydown',e=>{if(walkthroughOpen&&e.key==='Tab'){const dialog=document.querySelector('.walkthrough-dialog'),items=[...dialog.querySelectorAll('button:not(:disabled),a[href]')];if(items.length){const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}else if(!dialog.contains(document.activeElement)){e.preventDefault();first.focus();}}}if(e.key==='Escape'){if(walkthroughOpen){stopNarration();walkthroughOpen=false;render();document.querySelector('#old-lore-toggle')?.focus();}else if(musicOpen){musicOpen=false;syncMusicDock();}else if(groceryOpen){groceryOpen=false;render();}else if(shareOpen){const returnToGrocery=shareGrocery;shareOpen=false;shareMeal=false;shareGrocery=false;groceryOpen=returnToGrocery;render();}else if(mealOpen){mealOpen=false;const url=new URL(location.href);url.searchParams.delete('meal');url.searchParams.delete('courses');history.replaceState(null,'',url);render();}else if(selected)closeModal();}if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!e.target.matches('input,textarea,select')&&!selected&&!shareOpen&&!groceryOpen&&!musicOpen&&!mealOpen&&!walkthroughOpen&&!contributeOpen&&!document.querySelector('dialog[open]')){e.preventDefault();goToScreen(activeScreenIndex+(e.key==='ArrowRight'?1:-1));}});
 // Mobile keyboards and Mini App chrome often change height without changing the
 // layout breakpoint. CSS can handle those changes without discarding UI state.
@@ -698,6 +708,9 @@ window.addEventListener('resize',()=>{
 });
 render();
 recordAppPageView();
+if(Capacitor.isNativePlatform()){
+  App.addListener('backButton',()=>{if(!dismissTopmostOverlay())App.exitApp();});
+}
 import('@farcaster/miniapp-sdk').then(async ({sdk})=>{
   sdkInstance=sdk;
   // Send ready as soon as the interface is mounted, before context detection

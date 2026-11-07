@@ -1334,8 +1334,7 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .site-shell.moonlight .about-actions button:first-child{border-color:#c17a51;background:#c17a51;color:#fff7e8}
 @media(max-width:760px){.screen-about{padding:16px 4% calc(20px + env(safe-area-inset-bottom,0px))}.screen-about>.note-section{grid-template-columns:38px minmax(0,1fr);gap:9px 12px;margin-bottom:18px;padding:16px;border-radius:9px}.screen-about .note-symbol{width:34px;height:34px;font-size:21px}.screen-about .note-section h2{font-size:clamp(24px,7vw,34px)}.screen-about .note-section>p{grid-column:2;font-size:10px;line-height:1.5}.about-reading-key,.about-care-band{margin-bottom:20px}.about-section-heading{margin-bottom:10px}.about-section-heading h3,.about-care-band h3{font-size:25px}.about-section-heading p,.about-care-band p{font-size:10px}.about-key-grid{grid-template-columns:1fr;gap:8px}.about-key-card{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:10px;min-height:0;padding:12px 13px}.about-key-card:before{left:12px;right:12px}.about-key-mark{grid-column:1;grid-row:1/4;width:30px;height:30px;margin:1px 0 0}.about-key-label{grid-column:2;grid-row:1;font-size:7px}.about-key-card h4{grid-column:2;grid-row:2;margin:4px 0;font-size:17px}.about-key-card p{grid-column:2;grid-row:3;font-size:9px}.about-care-band{grid-template-columns:1fr;gap:13px;padding:13px;border-radius:9px}.about-care-art{min-height:102px}.about-care-art span{font-size:44px}.about-actions{gap:6px;margin-top:12px}.about-actions button{flex:1 1 145px;min-height:38px;font-size:8px}}
 
-/* Tighter first-screen composition: smaller hero and recipe cards without clipping copy. */
-.shared-app-hero{height:clamp(128px,17vh,178px)}
+/* Tighter first-screen composition: smaller recipe cards without clipping copy. */
 .screen-welcome .story-grid{grid-auto-rows:minmax(clamp(185px,27vh,230px),auto)}
 .screen-welcome .story-card{padding:7px 10px 6px}
 .screen-welcome .story-card>.card-art{width:min(100%,92px)}
@@ -1349,7 +1348,6 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .screen-welcome .recipe-story-card .recipe-card-source{font-size:7px;line-height:1.25}
 .screen-welcome .recipe-story-card .card-bottom{min-height:16px;padding-top:3px;font-size:7px}
 @media(max-width:700px){
- .shared-app-hero{height:clamp(84px,12vh,100px)}
  .screen-welcome .story-grid{grid-auto-rows:minmax(clamp(178px,27vh,215px),auto)}
  .screen-welcome .story-card{padding:6px 8px 5px}
  .screen-welcome .story-card>.card-art{width:min(100%,78px)}
@@ -1360,7 +1358,7 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
  .screen-welcome .recipe-story-card .recipe-card-quick,.screen-welcome .recipe-story-card .recipe-card-ingredients{font-size:7px}
  .screen-welcome .recipe-story-card .recipe-card-source,.screen-welcome .recipe-story-card .card-bottom{font-size:6px}
 }
-@media(max-height:620px) and (max-width:700px){.shared-app-hero{height:80px}.screen-welcome .story-grid{grid-auto-rows:minmax(164px,auto)}}
+@media(max-height:620px) and (max-width:700px){.screen-welcome .story-grid{grid-auto-rows:minmax(164px,auto)}}
 
 /* Illustrated, source-first trail map: progress marks are descriptive, never scored. */
 .walkthrough-map-line{position:absolute;z-index:2;inset:7% 5% 11%;width:90%;height:82%;overflow:visible;pointer-events:none}
@@ -1375,3 +1373,28 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .walkthrough-route li.current>span{animation:route-pin-breathe 2.8s ease-in-out infinite}
 @keyframes route-pin-breathe{0%,100%{box-shadow:0 0 0 3px #b8674316}50%{box-shadow:0 0 0 6px #b867432b}}
 @media(prefers-reduced-motion:reduce){.walkthrough-map-line-glow,.walkthrough-map-stamp,.walkthrough-route li.current>span{animation:none!important}}
+
+/* Shorter hero on phones so more of Discover stays in view. */
+@media(max-width:700px){
+ .site-shell main>.hero{height:clamp(72px,10vh,86px);min-height:72px;max-height:86px;flex:none}
+ .site-shell main>.hero .hero-copy{padding:6px 3% 24px 4%!important}
+ .site-shell main>.hero h1[data-hero-title]{font-size:clamp(20px,5.5vw,28px);line-height:.96;margin:2px 0 3px}
+ .site-shell main>.hero .hero-kicker{font-size:6px;line-height:1.1}
+ .site-shell main>.hero .hero-copy>p[data-hero-description]{font-size:7px;line-height:1.15;margin-top:2px}
+ .site-shell main>.hero .hero-visual{width:46%}
+}
+@media(max-height:560px) and (max-width:700px){.site-shell main>.hero{height:68px;min-height:68px;max-height:68px}.site-shell main>.hero .hero-copy{padding-bottom:20px!important}}
+
+/* Pantry food marks keep the guide scannable and readable in both themes. */
+.screen-pantry .ingredient-guide-card h4{display:flex;align-items:center;gap:9px;min-height:31px}
+.pantry-food-icon{display:grid;place-items:center;flex:none;width:28px;height:28px;border:1px solid #d4c8a7;border-radius:50%;background:#ebe6d3;color:#557257;font:700 15px/1 Georgia,serif}
+.site-shell.moonlight .screen-pantry .ingredient-guide{color:#f0ecdf}
+.site-shell.moonlight .screen-pantry .section-index,.site-shell.moonlight .screen-pantry .ingredient-guide-card>span{color:#e7b98c}
+.site-shell.moonlight .screen-pantry .ingredient-guide-card h4{color:#f2eee3}
+.site-shell.moonlight .screen-pantry .ingredient-guide-card p{color:#d9dfd5}
+.site-shell.moonlight .screen-pantry .ingredient-guide-card button,.site-shell.moonlight .screen-pantry .ingredient-guide-card a{color:#edc58f;border-color:#78877b}
+.site-shell.moonlight .screen-pantry .pantry-food-icon{background:#33474a;border-color:#819080;color:#e7c48f}
+
+/* Put the two social destinations first and give them matching visual weight. */
+.share-options #cast-share,.share-options #x-share{background:#e6ede4;border-color:#c5d0c2;color:#304a39}
+.site-shell.moonlight .share-options #cast-share,.site-shell.moonlight .share-options #x-share{background:#40534b;border-color:#879589;color:#fff4df}

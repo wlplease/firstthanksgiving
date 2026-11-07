@@ -1376,14 +1376,14 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 
 /* Shorter hero on phones so more of Discover stays in view. */
 @media(max-width:700px){
- .site-shell main>.hero{height:clamp(72px,10vh,86px);min-height:72px;max-height:86px;flex:none}
- .site-shell main>.hero .hero-copy{padding:6px 3% 24px 4%!important}
- .site-shell main>.hero h1[data-hero-title]{font-size:clamp(20px,5.5vw,28px);line-height:.96;margin:2px 0 3px}
- .site-shell main>.hero .hero-kicker{font-size:6px;line-height:1.1}
- .site-shell main>.hero .hero-copy>p[data-hero-description]{font-size:7px;line-height:1.15;margin-top:2px}
- .site-shell main>.hero .hero-visual{width:46%}
+ .site-shell .shared-app-hero{height:clamp(72px,10vh,86px)!important;min-height:72px!important;max-height:86px}
+ .site-shell .shared-app-hero>.hero{grid-template-columns:minmax(0,1fr) 31%!important}
+ .site-shell .shared-app-hero .hero-copy{padding:5px 3% 5px 4%!important}
+ .site-shell .shared-app-hero .hero h1[data-hero-title]{font-size:clamp(20px,5.5vw,28px)!important;line-height:.96;margin:2px 0 3px!important}
+ .site-shell .shared-app-hero .hero .hero-kicker{font-size:6px!important;line-height:1.1}
+ .site-shell .shared-app-hero .hero-copy>p[data-hero-description]{font-size:7px!important;line-height:1.15;margin-top:2px}
 }
-@media(max-height:560px) and (max-width:700px){.site-shell main>.hero{height:68px;min-height:68px;max-height:68px}.site-shell main>.hero .hero-copy{padding-bottom:20px!important}}
+@media(max-height:560px) and (max-width:700px){.site-shell .shared-app-hero{height:68px!important;min-height:68px!important;max-height:68px}.site-shell .shared-app-hero .hero-copy{padding-bottom:5px!important}}
 
 /* Pantry food marks keep the guide scannable and readable in both themes. */
 .screen-pantry .ingredient-guide-card h4{display:flex;align-items:center;gap:9px;min-height:31px}

@@ -1,10 +1,9 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-// Generated audio is checked into public/audio; credentials are read only from
-// an ignored local env file and are never copied into the browser bundle.
-const envFile = resolve('.env.local');
-const envText = await readFile(envFile, 'utf8');
+// Credentials stay in ignored .env.local. Generated same-origin audio means
+// the browser never needs the ElevenLabs key or a third-party audio request.
+const envText = await readFile(resolve('.env.local'), 'utf8');
 const env = Object.fromEntries(envText.split(/\r?\n/).filter(Boolean).map(line => {
   const index = line.indexOf('=');
   return [line.slice(0, index).trim(), line.slice(index + 1).trim().replace(/^['"]|['"]$/g, '')];
@@ -12,33 +11,70 @@ const env = Object.fromEntries(envText.split(/\r?\n/).filter(Boolean).map(line =
 const apiKey = env.ELEVELN_LAB_API_KEY || env.ELEVENLABS_API_KEY;
 if (!apiKey) throw new Error('Add ELEVELN_LAB_API_KEY to the ignored .env.local file.');
 
-// Use a standard narrator voice, with no attempt to imitate a Native speaker,
-// community, accent, or ceremonial vocal style.
-const voiceId = process.env.ELEVENLABS_VOICE_ID || env.ELEVENLABS_VOICE_ID;
-if (!voiceId) throw new Error('Add your own ElevenLabs voice ID as ELEVENLABS_VOICE_ID in .env.local. Library voices are not available through this account API plan.');
+const femaleVoice = process.env.ELEVENLABS_VOICE_ID_FEMALE || env.ELEVENLABS_VOICE_ID_FEMALE;
+const maleVoice = process.env.ELEVENLABS_VOICE_ID_MALE || env.ELEVENLABS_VOICE_ID_MALE;
+if (!femaleVoice || !maleVoice) {
+  throw new Error('Set ELEVENLABS_VOICE_ID_FEMALE and ELEVENLABS_VOICE_ID_MALE in .env.local.');
+}
+
+const turn = (voice_id, text) => ({ voice_id, text });
 const clips = [
-  { file: 'first-table-welcome.mp3', text: 'Welcome to First Table. Explore recipes, ingredients, and food stories from Florida north through the Atlantic coast and Great Lakes. Each place holds distinct traditions, and each story points to its source. Choose a region, find a dish, and bring a little more of its context to your table.' },
-  { file: 'st-augustine-1565.mp3', text: 'In September 1565, Pedro Menéndez and the Spanish colonists held a Mass of thanksgiving at St. Augustine, in Timucua homeland. The exact menu is unknown. The Florida Museum documents Timucua fishing, hunting, and cultivation of corn, beans, and squash. This is the local setting behind the story, not a claim that a modern recipe recreates that meal.' },
-  { file: 'oneida-wild-rice-stuffing.mp3', text: 'This wild rice stuffing comes from an Oneida community cookbook and is credited to an anonymous Oneida elder. Wild rice and white rice meet apple, mushrooms, sage, and seasoned croutons. It is one community recipe, shared in print, not a single recipe for all Great Lakes peoples.' },
-  { file: 'timucua-smoked-fish-pot.mp3', text: 'This smoked fish, corn, and squash pot is a new First Table home recipe inspired by foods documented for Timucua communities near St. Augustine. The museum describes fishing and the preservation of fish by smoking, alongside cultivated corn, beans, and squash. It is a modern interpretation, not a recovered Timucua recipe.' }
+  {
+    file: 'shore-season-welcome.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, welcoming] Welcome to Shore and Season, a journey from Florida along the Atlantic coast and toward the Great Lakes.'),
+      turn(maleVoice, '[calm, thoughtful] We follow recipes, ingredients, and stories rooted in specific places.'),
+      turn(femaleVoice, '[gentle] Each community carries its own food traditions.'),
+      turn(maleVoice, '[inviting] Choose a region, find a dish, and follow its sources.')
+    ]
+  },
+  {
+    file: 'st-augustine-1565.mp3',
+    inputs: [
+      turn(femaleVoice, '[measured, reflective] In September 1565, Spanish colonists held a Mass of thanksgiving at St. Augustine, in Timucua homeland.'),
+      turn(maleVoice, '[clear] The exact menu is unknown.'),
+      turn(femaleVoice, '[warm, informative] Museum records describe Timucua fishing, hunting, and the cultivation of corn, beans, and squash.'),
+      turn(maleVoice, '[respectful] This helps us understand the place. It does not reconstruct that meal or speak for Seloy people today.')
+    ]
+  },
+  {
+    file: 'oneida-wild-rice-stuffing.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, informative] This wild rice stuffing comes from an Oneida community cookbook and is credited to an anonymous Oneida elder.'),
+      turn(maleVoice, '[easy, conversational] Wild rice and white rice meet apple, mushrooms, sage, and seasoned croutons.'),
+      turn(femaleVoice, '[gentle] It is one community recipe, shared in print.'),
+      turn(maleVoice, '[thoughtful] Not one recipe for all Great Lakes peoples.')
+    ]
+  },
+  {
+    file: 'timucua-smoked-fish-pot.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, clear] This smoked fish, corn, and squash pot is a new Shore and Season home recipe.'),
+      turn(maleVoice, '[measured] It draws inspiration from foods documented for Timucua communities near St. Augustine.'),
+      turn(femaleVoice, '[informative] The Florida Museum describes fishing, smoked fish, and cultivated corn, beans, and squash.'),
+      turn(maleVoice, '[respectful] A modern interpretation, not a recovered Timucua recipe.')
+    ]
+  }
 ];
 
 const output = resolve('public/audio');
 await mkdir(output, { recursive: true });
 for (const clip of clips) {
-  const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}?output_format=mp3_44100_128`, {
+  const response = await fetch('https://api.elevenlabs.io/v1/text-to-dialogue?output_format=mp3_44100_128', {
     method: 'POST',
     headers: { 'xi-api-key': apiKey, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
     body: JSON.stringify({
-      text: clip.text,
-      model_id: 'eleven_multilingual_v2',
-      voice_settings: { stability: 0.58, similarity_boost: 0.78, style: 0.12, use_speaker_boost: true }
+      model_id: 'eleven_v3',
+      language_code: 'en',
+      inputs: clip.inputs,
+      apply_text_normalization: 'on',
+      seed: 4171565
     })
   });
   if (!response.ok) {
     const detail = await response.text();
-    throw new Error(`Speech generation failed for ${clip.file} (${response.status}): ${detail}`);
+    throw new Error(`Dialogue generation failed for ${clip.file} (${response.status}): ${detail}`);
   }
   await writeFile(resolve(output, clip.file), Buffer.from(await response.arrayBuffer()));
-  console.log(`Generated ${clip.file}`);
+  console.log(`Generated two-voice dialogue: ${clip.file}`);
 }

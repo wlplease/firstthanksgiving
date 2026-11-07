@@ -1,4 +1,4 @@
-# First Table
+# Shore & Season
 
 A responsive web app and Farcaster Mini App exploring Native foodways from Florida through the East Coast and Great Lakes. Florida is the default region.
 

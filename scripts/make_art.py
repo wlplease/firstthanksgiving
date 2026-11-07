@@ -22,7 +22,7 @@ def art(size, title=False):
     for n in range(7):
         y=int(h*(.66+n*.07))
         d.arc((-int(w*.2),y-int(h*.16),int(w*1.2),y+int(h*.32)),0,180,fill='#6d8b70',width=max(2,int(w*.003)))
-    cx,cy=int(w*.29),int(h*.40)
+    cx,cy=(int(w*.33),int(h*.72)) if title else (int(w*.29),int(h*.40))
     for angle in range(0,360,45):
         import math
         x1=cx+int(w*.055*math.cos(math.radians(angle))); y1=cy+int(w*.055*math.sin(math.radians(angle)))
@@ -30,9 +30,9 @@ def art(size, title=False):
         d.line((x1,y1,x2,y2),fill=CLAY,width=max(4,int(w*.012)))
     d.ellipse((cx-int(w*.035),cy-int(w*.035),cx+int(w*.035),cy+int(w*.035)),fill=CLAY)
     if title:
-        d.text((int(w*.08),int(h*.13)),'FIRST',font=font(int(w*.095),True),fill=GREEN)
-        d.text((int(w*.08),int(h*.13)+int(w*.105)),'TABLE',font=font(int(w*.095),True),fill=GREEN)
-        d.text((int(w*.08),int(h*.52)),'NATIVE FOODWAYS  /  EAST COAST',font=font(int(w*.019)),fill=GREEN)
+        d.text((int(w*.08),int(h*.13)),'SHORE &',font=font(int(w*.09),True),fill=GREEN)
+        d.text((int(w*.08),int(h*.13)+int(w*.105)),'SEASON',font=font(int(w*.09),True),fill=GREEN)
+        d.text((int(w*.08),int(h*.52)),'NATIVE FOODWAYS  ·  PLACE  ·  FOOD',font=font(int(w*.018)),fill=GREEN)
     return im
 
 art((1024,1024)).save(OUT/'icon.png')

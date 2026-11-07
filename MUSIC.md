@@ -1,6 +1,6 @@
-# First Table — Original Music Kit
+# Shore & Season — Original Music Kit
 
-Original music briefs for the First Table app. These tracks are contemporary atmosphere pieces inspired by coast, season, and harvest. They do not imitate Indigenous ceremonial music, traditional songs, or nation-specific instruments.
+Original music briefs for the Shore & Season app. These tracks are contemporary atmosphere pieces inspired by coast, season, and harvest. They do not imitate Indigenous ceremonial music, traditional songs, or nation-specific instruments.
 
 ## Published app track · Follow the Water
 
@@ -124,6 +124,6 @@ There is room beside
 
 ## App background player
 
-First Table keeps the Suno embed mounted in a persistent player dock outside the app's redraw area. Playback continues while visitors filter regions and open recipe cards; the embed's own play/pause control remains the audio control. The player is user-started and does not autoplay. The dock exposes a playlist queue as more released tracks are added.
+Shore & Season keeps the Suno embed mounted in a persistent player dock outside the app's redraw area. Playback continues while visitors filter regions and open recipe cards; the embed's own play/pause control remains the audio control. The player is user-started and does not autoplay. The dock exposes a playlist queue as more released tracks are added.
 
 To add a track after it is published, append an object to `soundtrackTracks` in `src/main.js` with a stable `id`, `title`, `creator`, Suno `songId` (the ID used in `https://suno.com/embed/<songId>`), and its public `shareUrl`. The player builds the queue from this list. Keep the Suno embed and attribution; do not extract a stream URL or redistribute audio outside the rights granted for the track.

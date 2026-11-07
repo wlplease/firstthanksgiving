@@ -11,21 +11,21 @@ if (!association || !['header','payload','signature'].every(key => typeof associ
 const manifest = {
   accountAssociation: association,
   miniapp: {
-    version: '1', name: 'First Table', homeUrl: base,
+    version: '1', name: 'Shore & Season', homeUrl: base,
     iconUrl: `${base}/icon.png`, splashImageUrl: `${base}/splash.png`, splashBackgroundColor: '#d9ded2',
-    subtitle: 'Native foodways of the coast',
-    description: 'Explore Native food traditions, ingredients, and living communities along the East Coast.',
+    subtitle: 'Native foodways & recipes',
+    description: 'Explore Native recipes and living foodways from Florida to the Great Lakes.',
     primaryCategory: 'education', tags: ['food','history','culture'],
-    heroImageUrl: `${base}/hero.png`, ogTitle: 'First Table',
-    ogDescription: 'Explore Native foodways of the East Coast.', ogImageUrl: `${base}/hero.png`,
+    heroImageUrl: `${base}/hero.png`, ogTitle: 'Shore & Season',
+    ogDescription: 'Native recipes and living foodways from Florida to the Great Lakes.', ogImageUrl: `${base}/hero.png`,
     supportsFullScreen: true
   }
 };
-const embed = {version:'1',imageUrl:`${base}/embed.png`,button:{title:'Explore foodways',action:{type:'launch_miniapp',name:'First Table',splashImageUrl:`${base}/splash.png`,splashBackgroundColor:'#d9ded2'}}};
+const embed = {version:'1',imageUrl:`${base}/embed.png`,button:{title:'Explore foodways',action:{type:'launch_miniapp',name:'Shore & Season',splashImageUrl:`${base}/splash.png`,splashBackgroundColor:'#d9ded2'}}};
 const file = resolve('dist/index.html');
 let html = await readFile(file,'utf8');
 const tag = json => JSON.stringify(json).replaceAll('&','&amp;').replaceAll("'",'&#39;').replaceAll('<','&lt;');
-html = html.replace('</head>', `<meta property="og:title" content="First Table"/><meta property="og:description" content="Explore Native foodways of the East Coast."/><meta property="og:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/><meta name="fc:frame" content='${tag({...embed,button:{...embed.button,action:{...embed.button.action,type:'launch_frame'}}})}'/></head>`);
+html = html.replace('</head>', `<meta property="og:title" content="Shore & Season"/><meta property="og:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta property="og:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/><meta name="fc:frame" content='${tag({...embed,button:{...embed.button,action:{...embed.button.action,type:'launch_frame'}}})}'/></head>`);
 await writeFile(file,html);
 await mkdir(resolve('dist/.well-known'),{recursive:true});
 await writeFile(resolve('dist/.well-known/farcaster.json'),JSON.stringify(manifest,null,2));

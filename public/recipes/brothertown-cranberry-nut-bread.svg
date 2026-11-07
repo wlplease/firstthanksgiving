@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Illustration of cranberries and nuts, bread batter, and a finished cranberry nut loaf">
+  <defs>
+    <linearGradient id="a" x2="0" y2="1"><stop stop-color="#efd9a9"/><stop offset="1" stop-color="#bf7958"/></linearGradient>
+    <linearGradient id="b" x2="0" y2="1"><stop stop-color="#e7d4ac"/><stop offset="1" stop-color="#8b775b"/></linearGradient>
+    <linearGradient id="c" x2="0" y2="1"><stop stop-color="#d9dfc2"/><stop offset="1" stop-color="#7d8b6c"/></linearGradient>
+  </defs>
+  <path fill="url(#a)" d="M0 0h400v400H0z"/><path fill="url(#b)" d="M400 0h400v400H400z"/><path fill="url(#c)" d="M800 0h400v400H800z"/>
+  <g fill="#fff3d8" opacity=".76"><circle cx="322" cy="67" r="40"/><circle cx="718" cy="68" r="36"/><circle cx="1090" cy="68" r="38"/></g>
+  <g stroke="#57483e" stroke-width="5">
+    <path fill="#e7e0c9" d="M65 210q30-36 68 0l-12 90H76z"/><path fill="#b54f47" d="M88 197q13-23 25 0l-4 24H92z"/><path fill="#b54f47" d="M145 215q13-23 25 0l-4 24h-17z"/><path fill="#b54f47" d="M205 195q13-23 25 0l-4 24h-17z"/>
+    <path fill="#c49555" d="M267 241q25-21 50 0l-8 34h-35z"/><path fill="#d5b26b" d="M303 253q25-21 50 0l-8 34h-35z"/>
+    <path fill="#f4ead1" d="M475 211h250l-15 92q-110 46-220 0z"/><path fill="#d5a65b" d="M480 214q117 54 240 0"/>
+    <path fill="#88523a" d="M869 233q22-59 110-58h75q77 1 99 58l-19 70H889z"/><path fill="#d99d52" d="M873 235q130-52 276 0"/>
+  </g>
+  <g fill="#b64f48"><circle cx="532" cy="231" r="10"/><circle cx="583" cy="257" r="10"/><circle cx="637" cy="231" r="10"/><circle cx="690" cy="258" r="10"/><circle cx="949" cy="213" r="8"/><circle cx="1013" cy="229" r="8"/></g>
+  <g fill="#ead18f"><ellipse cx="999" cy="247" rx="11" ry="7"/><ellipse cx="1054" cy="260" rx="12" ry="7"/><ellipse cx="936" cy="265" rx="11" ry="7"/></g>
+  <path d="M0 343q100-26 200 0t200 0m0 18q100-26 200 0t200 0m0-18q100-26 200 0t200 0" fill="none" stroke="#fff1d1" stroke-width="5" opacity=".42"/>
+</svg>

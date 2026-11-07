@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Illustration of ingredients, simmering, and a finished corn and bean stew">
+  <defs>
+    <linearGradient id="sky1" x2="0" y2="1"><stop stop-color="#ead9ad"/><stop offset="1" stop-color="#b77656"/></linearGradient>
+    <linearGradient id="sky2" x2="0" y2="1"><stop stop-color="#d8c89f"/><stop offset="1" stop-color="#71836b"/></linearGradient>
+    <linearGradient id="sky3" x2="0" y2="1"><stop stop-color="#d8d9ba"/><stop offset="1" stop-color="#748465"/></linearGradient>
+  </defs>
+  <path fill="url(#sky1)" d="M0 0h400v400H0z"/><path fill="url(#sky2)" d="M400 0h400v400H400z"/><path fill="url(#sky3)" d="M800 0h400v400H800z"/>
+  <g fill="#fff3d7" opacity=".75"><circle cx="333" cy="65" r="39"/><circle cx="715" cy="66" r="35"/><circle cx="1090" cy="68" r="38"/></g>
+  <g stroke="#76513b" stroke-width="5">
+    <path fill="#d9bd68" d="M80 206q17-34 44 0v89H80z"/><path fill="#d9bd68" d="M151 194q17-34 44 0v101h-44z"/>
+    <path fill="#6c7951" d="M229 240q25-29 49 0v55h-49z"/><path fill="#715244" d="M278 245q25-24 49 0v50h-49z"/>
+  </g>
+  <g fill="#f2db97"><circle cx="102" cy="235" r="8"/><circle cx="172" cy="225" r="8"/><circle cx="248" cy="261" r="8"/></g>
+  <g fill="none" stroke="#fff4dd" stroke-width="5" opacity=".85"><path d="M540 160q-20-27 0-48t0-45"/><path d="M651 160q-20-27 0-48t0-45"/></g>
+  <g stroke="#59493e" stroke-width="7" stroke-linejoin="round">
+    <path fill="#384b43" d="M486 205h228l-22 100q-91 42-184 0z"/><path fill="#c89b54" d="M490 207q109 43 220 0"/>
+    <path fill="#e2c577" d="M882 219h235l-24 91q-93 43-187 0z"/><path fill="#c5934e" d="M886 220q111 45 227 0"/>
+  </g>
+  <g fill="#ead495"><circle cx="531" cy="227" r="10"/><circle cx="570" cy="247" r="10"/><circle cx="614" cy="224" r="10"/><circle cx="659" cy="245" r="10"/><circle cx="930" cy="239" r="10"/><circle cx="980" cy="263" r="10"/><circle cx="1031" cy="238" r="10"/><circle cx="1080" cy="262" r="10"/></g>
+  <g fill="#8a4e42"><ellipse cx="550" cy="259" rx="14" ry="9"/><ellipse cx="635" cy="265" rx="14" ry="9"/><ellipse cx="952" cy="270" rx="14" ry="9"/><ellipse cx="1055" cy="267" rx="14" ry="9"/></g>
+  <path d="M0 339q100-28 200 0t200 0m0 20q100-28 200 0t200 0m0-20q100-28 200 0t200 0" fill="none" stroke="#fff2d7" stroke-width="5" opacity=".38"/>
+</svg>

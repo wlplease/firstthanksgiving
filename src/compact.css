@@ -867,6 +867,60 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
  .screen-pantry .ingredient-guide-grid{margin-top:5px}
 }
 
+/* Roots & lore: a compact editorial key with a deeper, sourced detail view. */
+.explore-guidance{display:flex;align-items:center;justify-content:flex-end}
+.roots-key-trigger{min-height:36px;padding:8px 12px;border:1px solid #cbd2c5;border-radius:999px;background:#f7f6ef;color:#405746;font-size:9px;font-weight:700;white-space:nowrap;cursor:pointer}
+.roots-key-trigger span{padding-left:5px;color:#a55e3e}
+.roots-key-trigger:hover,.roots-key-trigger:focus-visible{background:#e7ede4;outline:2px solid #b56343;outline-offset:2px}
+.card-roots-link{flex:none;color:#a05e3f;font-size:8px;font-weight:800;letter-spacing:.04em;white-space:nowrap}
+.site-shell.moonlight .roots-key-trigger{background:#3d504b;border-color:#718075;color:#f0ecdf}
+.site-shell.moonlight .roots-key-trigger span,.site-shell.moonlight .card-roots-link{color:#e4b17e}
+.history-note{border:1px solid #ddd9ca;border-left:3px solid #b76542;border-radius:4px;background:linear-gradient(135deg,#f7f3e8,#f1f1e7)}
+.history-note-label{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#9a5639;font-size:8px;font-weight:800;letter-spacing:.13em}
+.regional-roots{margin:13px 0 16px;padding:12px 13px;border:1px solid #d9ddcf;border-radius:4px;background:#e9eee4}
+.regional-roots-label{display:block;color:#3c5945;font:500 17px/1.2 'Playfair Display',Georgia,serif}
+.regional-roots p{margin:7px 0;color:#556457;font-size:11px;line-height:1.55}
+.regional-roots>div{display:flex;flex-wrap:wrap;gap:8px 15px}
+.regional-roots a,.history-note>a{color:#89533b;font-size:9px;font-weight:700;line-height:1.5;text-decoration:underline;text-underline-offset:2px}
+.history-note>h3{margin:12px 0 6px;color:#344b3b;font:500 20px/1.2 'Playfair Display',Georgia,serif}
+.history-note>p{margin:0 0 9px;color:#576459;font-size:11px;line-height:1.65}
+.roots-key-dialog{width:min(740px,calc(100vw - 24px));max-height:min(90dvh,900px);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:clamp(24px,5vw,48px)}
+.roots-key-dialog>h2{max-width:570px;margin-bottom:10px}
+.roots-key-dialog>p{max-width:650px}
+.roots-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0}
+.roots-timeline article{min-width:0;padding:15px;border:1px solid #d7d9cd;border-radius:5px;background:#f0f1e8}
+.roots-timeline article>span{color:#a35e3e;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.roots-timeline h3{margin:8px 0;color:#354b3b;font:500 19px/1.2 'Playfair Display',Georgia,serif}
+.roots-timeline article p,.roots-living p{margin:7px 0 11px;color:#59675c;font-size:11px;line-height:1.6}
+.roots-timeline article a,.roots-living a{display:block;margin-top:7px;color:#88513a;font-size:9px;font-weight:700;line-height:1.45;text-decoration:underline;text-underline-offset:2px}
+.roots-living{padding:16px;border-left:3px solid #b76542;background:#e9eee4}
+.roots-living>.eyebrow{color:#92563a}
+.roots-living p{margin-bottom:8px}
+.roots-key-note{padding-top:14px;border-top:1px solid #dedfd5;font-size:10px!important}
+body.moonlight-page .roots-key-dialog{border-color:#68796e;background:#34464a;color:#f0ecdf}
+body.moonlight-page .roots-key-dialog>h2,body.moonlight-page .roots-timeline h3{color:#f0ecdf}
+body.moonlight-page .roots-key-dialog>p,body.moonlight-page .roots-timeline article p,body.moonlight-page .roots-living p{color:#d0d8ce}
+body.moonlight-page .roots-timeline article{background:#3e504d;border-color:#68796e}
+body.moonlight-page .roots-living{background:#3d4d49}
+body.moonlight-page .regional-roots{background:#3e504d;border-color:#68796e}
+body.moonlight-page .regional-roots-label{color:#f0ecdf}
+body.moonlight-page .regional-roots p,body.moonlight-page .history-note>p{color:#d0d8ce}
+body.moonlight-page .history-note{background:#394b49;border-color:#68796e}
+body.moonlight-page .history-note>h3{color:#f0ecdf}
+body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.moonlight-page .roots-timeline article a,body.moonlight-page .roots-living a{color:#edbd91}
+@media(max-width:700px){
+ .explore-guidance{align-items:flex-end}
+ .roots-key-trigger{min-height:36px;padding:7px 9px;font-size:8px}
+ .card-roots-link{font-size:7px}
+ .regional-roots{margin:10px 0 13px;padding:10px}
+ .regional-roots-label{font-size:16px}
+ .regional-roots p,.history-note>p{font-size:10px}
+ .roots-timeline{grid-template-columns:1fr;gap:8px;margin:15px 0}
+ .roots-timeline article{padding:12px}
+ .roots-timeline h3{font-size:18px}
+ .roots-key-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:24px 18px}
+}
+
 /* Thumb-friendly screen controls with a subtle swipe affordance. */
 .screen-swipe-hint{display:inline-flex;align-items:center;gap:5px;color:#879183;font-size:7px;font-weight:800;letter-spacing:.13em;white-space:nowrap}
 .screen-swipe-hint b{color:#a76543;font-size:13px;font-weight:500;letter-spacing:0}
@@ -891,7 +945,7 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 @media(max-width:700px){
  .welcome-screen-hero{flex:0 0 76px;height:76px}
  .welcome-screen-body>.explore{display:flex;flex-direction:column}
- .welcome-screen-body .story-grid{flex:1 0 clamp(190px,36dvh,340px);min-height:clamp(190px,36dvh,340px);grid-auto-rows:minmax(0,1fr)}
+ .welcome-screen-body .story-grid{flex:1 1 clamp(180px,34dvh,320px);min-height:clamp(180px,34dvh,320px);grid-auto-rows:minmax(0,1fr)}
  .welcome-screen-body .story-card{height:100%;min-height:0;grid-template-columns:36% minmax(0,1fr)}
  .welcome-screen-body .story-card .card-art{height:100%;min-height:0;flex-basis:auto}
  .welcome-screen-body .story-card .card-body{height:100%;padding:clamp(11px,2vh,19px) clamp(12px,3vw,20px)}
@@ -902,9 +956,34 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 }
 @media(max-height:680px) and (max-width:700px){
  .welcome-screen-hero{flex-basis:62px;height:62px}
- .welcome-screen-body .story-grid{flex-basis:clamp(160px,30dvh,220px);min-height:clamp(160px,30dvh,220px)}
+ .welcome-screen-body .story-grid{flex-basis:clamp(150px,27dvh,200px);min-height:clamp(150px,27dvh,200px)}
 }
 @media(max-height:560px) and (max-width:700px){
  .welcome-screen-hero{flex-basis:48px;height:48px}
- .welcome-screen-body .story-grid{flex-basis:145px;min-height:145px}
+ .welcome-screen-body .story-grid{flex-basis:138px;min-height:138px}
+ .welcome-screen-body .story-card .card-description{flex-basis:2.8em;min-height:2.8em;max-height:2.8em;-webkit-line-clamp:2}
 }
+
+/* Larger welcome recipe targets with a deliberate swipe-to-page gesture. */
+.welcome-screen-body .story-grid{touch-action:pan-y}
+.welcome-screen-body .pagination{gap:14px;min-height:48px}
+.welcome-screen-body .pagination button{width:48px;height:48px;min-width:48px;border-radius:50%;font-size:20px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.welcome-screen-body .pagination button:focus-visible{outline:3px solid #b56343;outline-offset:3px}
+@media(max-width:700px){
+ .welcome-screen-body .story-grid{flex-basis:clamp(220px,40dvh,370px);min-height:clamp(220px,40dvh,370px)}
+ .welcome-screen-body .pagination{flex:none;margin:8px 0 2px}
+}
+@media(max-height:680px) and (max-width:700px){
+ .welcome-screen-body .story-grid{flex-basis:clamp(170px,31dvh,230px);min-height:clamp(170px,31dvh,230px)}
+}
+@media(max-height:560px) and (max-width:700px){
+ .welcome-screen-body .story-grid{flex-basis:142px;min-height:142px}
+ .welcome-screen-body .pagination button{width:42px;height:42px;min-width:42px}
+}
+
+/* Easy-to-hit close controls for dialogs, source windows, and the story walk. */
+.modal-close,.source-browser-close,.walkthrough-close{width:44px;height:44px;min-width:44px;min-height:44px;display:grid;place-items:center;border-radius:50%;font-size:27px;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.about-dialog .modal-close{width:44px;height:44px;min-width:44px;min-height:44px}
+.meal-dialog>.modal-close{width:44px;height:44px;min-width:44px;min-height:44px;line-height:1}
+.modal-close:focus-visible,.source-browser-close:focus-visible,.walkthrough-close:focus-visible{outline:3px solid #b56343;outline-offset:3px}
+@media(max-width:700px){.modal-close,.source-browser-close,.walkthrough-close{top:10px;right:10px}.about-dialog .modal-close{top:-5px;right:-5px}}

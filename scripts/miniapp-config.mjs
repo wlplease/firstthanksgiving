@@ -28,6 +28,15 @@ if (associationText) {
   try { association = JSON.parse(associationText); }
   catch { throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must be valid JSON from Farcaster Developer Tools.'); }
   if (!association || !['header','payload','signature'].every(key => typeof association[key] === 'string' && association[key])) throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must contain the signed header, payload, and signature from Farcaster Developer Tools.');
+  // Farcaster signatures are base64url encoded. The supplied signature was
+  // standard base64 (+, /, =) which parses locally but fails Farcaster's
+  // account-association comparison. Convert the same signed bytes losslessly.
+  const signatureBase64 = association.signature.replace(/-/g, '+').replace(/_/g, '/');
+  const signatureBytes = Buffer.from(signatureBase64, 'base64');
+  if (!signatureBytes.length || signatureBytes.toString('base64').replace(/=+$/, '') !== signatureBase64.replace(/=+$/, '')) {
+    throw new Error('The Farcaster account-association signature is not valid base64/base64url. Copy the signature from Farcaster Developer Tools.');
+  }
+  association.signature = signatureBytes.toString('base64url');
   let associationDomain = '';
   try { associationDomain = JSON.parse(Buffer.from(association.payload, 'base64url').toString('utf8')).domain || ''; }
   catch { throw new Error('The Farcaster account association payload could not be decoded. Generate a fresh signed association for the production domain.'); }

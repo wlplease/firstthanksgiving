@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Three illustrated stages of Agilisi’s Dinner: pork, vegetables, and greens">
+ <defs><linearGradient id="earth" x2="0" y2="1"><stop stop-color="#d9e2d0"/><stop offset="1" stop-color="#bbcfaa"/></linearGradient><linearGradient id="meat" x2="0" y2="1"><stop stop-color="#c77a53"/><stop offset="1" stop-color="#874438"/></linearGradient></defs>
+ <rect width="400" height="420" fill="url(#earth)"/><rect x="400" width="400" height="420" fill="#e8e7d3"/><rect x="800" width="400" height="420" fill="#e7dfc7"/>
+ <g fill="#fff9e8" font-family="Georgia,serif" font-size="21" letter-spacing="3"><text x="32" y="52">01 · PORK &amp; SEASONING</text><text x="432" y="52">02 · SQUASH &amp; MUSHROOMS</text><text x="832" y="52">03 · GREENS TOGETHER</text></g>
+ <path d="M111 177q84-49 171 0l-22 102q-65 49-128 0z" fill="url(#meat)" stroke="#70493c" stroke-width="7"/><path d="M140 215q58-36 116 0m-92 35q40-25 79 0" fill="none" stroke="#e9bb8b" stroke-width="9" stroke-linecap="round"/>
+ <path d="M497 267q15-95 101-79 81-9 99 79-94 61-200 0" fill="#3f4e43"/><path d="M524 238q22-42 48 0-26 29-48 0m65 32q22-42 48 0-26 29-48 0" fill="#d49a4c"/><circle cx="647" cy="227" r="24" fill="#f0d69b" stroke="#886b50" stroke-width="5"/><circle cx="647" cy="227" r="10" fill="#a8754a"/>
+ <ellipse cx="1000" cy="275" rx="139" ry="80" fill="#f6efde" stroke="#758068" stroke-width="8"/><path d="M882 270q45-46 89-2t92-3 55 4q-44 51-89 5t-91 3-56-7" fill="#749264"/><path d="M902 231q28-22 55 1-25 25-55-1m94 65q30-22 58 1-28 25-58-1" fill="#98aa71"/><path d="M953 245q23-37 48 0-25 25-48 0" fill="url(#meat)"/><path d="M1043 226q19-32 39 0-20 22-39 0" fill="#d9a258"/>
+</svg>

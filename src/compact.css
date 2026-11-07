@@ -466,6 +466,35 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .contribute-dialog{max-height:min(90dvh,760px);overflow:auto}.contribute-dialog h2{font-size:clamp(28px,4vw,38px)}.contribute-dialog form{display:grid;gap:10px}.contribute-dialog form>label{display:grid;gap:4px;color:#566354;font-size:9px;font-weight:700}.contribute-dialog input,.contribute-dialog select,.contribute-dialog textarea{width:100%;padding:9px 10px;border:1px solid #cbd1c4;border-radius:4px;background:#fffdf8;color:#34473a;font:400 11px 'DM Sans',sans-serif}.contribute-dialog textarea{resize:vertical;min-height:88px}.contribute-dialog .contribute-privacy{margin:3px 0;color:#70776e;font-size:9px;line-height:1.5}.contribute-submit{padding:11px 14px;border:0;background:#334b3e;color:#fff8e9;font-size:10px;font-weight:700}
 .site-shell.moonlight .recipe-filters,.site-shell.moonlight .feast-recipes{background:#3d4d49;border-color:#69766b;color:#f0eee4}.site-shell.moonlight .recipe-filters>p,.site-shell.moonlight .feast-recipes>article span,.site-shell.moonlight .feast-recipes>p{color:#d0d8ce}.site-shell.moonlight .recipe-filter-grid select,.site-shell.moonlight #meal-servings,.site-shell.moonlight .contribute-dialog input,.site-shell.moonlight .contribute-dialog select,.site-shell.moonlight .contribute-dialog textarea{background:#314248;border-color:#647369;color:#f1ecdf}.site-shell.moonlight .source-context{background:#3d4d49}.site-shell.moonlight .source-context strong,.site-shell.moonlight .feast-recipes h3{color:#f0eee4}
 @media(max-width:700px){.recipe-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.recipe-filter-grid fieldset{grid-column:1/-1}.recipe-filters>summary{gap:5px}.recipe-filters>summary>span{font-size:7px}.recipe-filters>summary{min-height:28px;padding:4px 8px;font-size:8px}.contribute-dialog{max-height:86dvh;padding:24px 20px}}
+@media(max-width:700px){.discover-filter-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:8px;margin:7px 0 10px}.discover-filter-row>.region-select{width:100%;min-width:0;margin:0}.discover-filter-row>.recipe-filters{width:100%;min-width:0;margin:0}.discover-filter-row>.recipe-filters>summary{min-width:0;white-space:nowrap}.discover-filter-row>.recipe-filters>summary>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+@media(max-width:390px){.discover-filter-row>.recipe-filters>summary>span{display:none}.discover-filter-row>.recipe-filters>summary{gap:4px}}
+.recipe-card-quick,.recipe-card-ingredients,.recipe-card-source{width:100%;min-width:0;color:#536354;font-size:9px;line-height:1.35}
+.recipe-card-quick{margin-top:2px;font-variant-numeric:tabular-nums}
+.recipe-card-quick b{color:#8a583d;font-size:8px;text-transform:uppercase;letter-spacing:.06em}
+.recipe-card-quick i{padding:0 4px;color:#a7a996;font-style:normal}
+.recipe-card-ingredients{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#697568}
+.recipe-card-source{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#8d5a3f;font-size:8px}
+.screen-welcome .story-card .recipe-card-quick{grid-column:1/-1;grid-row:4;margin-top:2px}
+.screen-welcome .story-card .recipe-card-ingredients{grid-column:1/-1;grid-row:5}
+.screen-welcome .story-card .recipe-card-source{grid-column:1/-1;grid-row:6}
+.screen-welcome .story-card.recipe-story-card .card-bottom{grid-column:1/-1;grid-row:7}
+.screen-welcome .story-card .recipe-card-quick,.screen-welcome .story-card .recipe-card-ingredients{font-size:clamp(8px,.78vw,10px)}
+.screen-welcome .story-card .recipe-card-source{font-size:clamp(7px,.68vw,8px)}
+.recipe-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:17px 0 14px;padding:10px;border:1px solid #d5d9ce;background:#f2f2e9}
+.recipe-overview>span{display:grid;gap:3px;min-width:0}
+.recipe-overview small{color:#9a5a3b;font-size:7px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.recipe-overview b{overflow-wrap:anywhere;color:#435547;font-size:9px;line-height:1.35}
+.site-shell.moonlight .recipe-overview{background:#3e4e49;border-color:#69766b}
+.site-shell.moonlight .recipe-overview b{color:#e7eadd}
+.site-shell.moonlight .recipe-card-quick,.site-shell.moonlight .recipe-card-ingredients{color:#e2e7db}
+.site-shell.moonlight .recipe-card-source{color:#efbd91}
+.site-shell.moonlight .recipe-card-quick b{color:#efbd91}
+.site-shell.moonlight .recipe-card-quick i{color:#c5cbbb}
+.walkthrough-trail-status{display:block;min-height:12px;color:#4f6a50;font-size:8px;line-height:1.4}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-trail-status{color:#d2dfc7}
+@media(max-width:700px){.recipe-overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;padding:8px;margin:12px 0}.recipe-overview small{font-size:6px}.recipe-overview b{font-size:8px}.screen-welcome .story-card .recipe-card-quick{grid-column:1/-1;grid-row:4}.screen-welcome .story-card .recipe-card-ingredients{grid-column:1/-1;grid-row:5}.screen-welcome .story-card .recipe-card-source{grid-column:1/-1;grid-row:6}.screen-welcome .story-card.recipe-story-card .card-bottom{grid-column:1/-1;grid-row:7}}
+.recipe-modal .modal-links{position:sticky;bottom:0;z-index:2;margin:16px 0 0;padding:12px 0 calc(8px + env(safe-area-inset-bottom));background:#f8f6ee;box-shadow:0 -10px 16px #f8f6ee}
+.site-shell.moonlight .recipe-modal .modal-links{background:#33464a;box-shadow:0 -10px 16px #33464a}
 @media(max-width:700px){.modal:not(.recipe-modal){max-height:calc(100dvh - 16px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}.modal:not(.recipe-modal) .modal-content{max-height:none;overflow:visible}}
 
 /* Refined hero proportions and the optional, source-led story walk. */
@@ -1148,7 +1177,7 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 
 /* The hero and screen menu form a shared header above every swipe panel. */
 .shared-app-header{position:relative;z-index:4;display:flex;flex:none;flex-direction:column;width:100%;min-width:0;background:#f2f0e7}
-.shared-app-hero{height:clamp(156px,23vh,220px);min-height:0;overflow:hidden}
+.shared-app-hero{height:clamp(148px,21vh,204px);min-height:0;overflow:hidden}
 .shared-app-hero>.hero{display:grid;width:100%;height:100%;min-height:0;grid-template-columns:minmax(0,1fr) minmax(220px,34%);background:linear-gradient(115deg,#ebe9df,#dce3d8)}
 .shared-app-hero .hero-copy{grid-column:1;position:relative;z-index:2;width:auto;max-width:none;justify-content:center;height:100%;min-width:0;padding:clamp(12px,2.2vh,22px) clamp(18px,4vw,54px)}
 .shared-app-hero .hero-copy .hero-kicker{display:block!important;font-size:clamp(7px,.7vw,9px)}
@@ -1167,11 +1196,11 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .welcome-screen-body>.explore{width:100%;height:100%;min-width:0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .screen-welcome-active>main>.screen-nav:not(.screen-nav-inline){display:none}
 @media(max-width:700px){
- .shared-app-hero{height:clamp(100px,15vh,124px)}
+ .shared-app-hero{height:clamp(96px,14vh,116px)}
  .shared-app-hero>.hero{grid-template-columns:minmax(0,1fr) 29%}
- .shared-app-hero .hero-copy{padding:6px 12px}
+ .shared-app-hero .hero-copy{padding:5px 12px}
  .shared-app-hero .hero-copy .hero-kicker{font-size:6px;letter-spacing:.11em}
- .shared-app-hero .hero h1{width:100%;max-width:100%;margin:2px 0;font-size:clamp(18px,5.1vw,29px);line-height:.98;overflow-wrap:normal}
+ .shared-app-hero .hero h1{width:100%;max-width:100%;margin:1px 0;font-size:clamp(18px,5.1vw,29px);line-height:.98;overflow-wrap:normal}
  .shared-app-hero .hero-copy>p[data-hero-description]{max-width:100%;font-size:8px;line-height:1.2}
  .shared-app-header>.screen-nav-inline{height:42px;min-height:42px;padding:1px max(8px,env(safe-area-inset-left,0px)) 1px max(8px,env(safe-area-inset-right,0px))}
  .shared-app-header .screen-nav-inline .screen-tabs button{min-height:38px;font-size:9px}

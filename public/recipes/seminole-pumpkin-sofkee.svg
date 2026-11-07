@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Three illustrated stages of a modern pumpkin sofkee variation">
+ <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e9d6a9"/><stop offset="1" stop-color="#a8c0aa"/></linearGradient><linearGradient id="porridge" x2="0" y2="1"><stop stop-color="#f0bf64"/><stop offset="1" stop-color="#c86d3f"/></linearGradient></defs>
+ <path fill="url(#sky)" d="M0 0h400v420H0z"/><path fill="#dce5d5" d="M400 0h400v420H400z"/><path fill="#e8dfc3" d="M800 0h400v420H800z"/>
+ <g fill="#446650" opacity=".18"><circle cx="350" cy="65" r="43"/><circle cx="730" cy="58" r="34"/><circle cx="1120" cy="72" r="40"/></g>
+ <g fill="#fff8e8" font-family="Georgia,serif" font-size="22" letter-spacing="4"><text x="34" y="54">01 · RICE &amp; PUMPKIN</text><text x="434" y="54">02 · GENTLE SIMMER</text><text x="834" y="54">03 · WARM SOFKEE</text></g>
+ <g fill="#f8f0dd" stroke="#788666" stroke-width="5"><ellipse cx="195" cy="275" rx="120" ry="72"/><ellipse cx="195" cy="250" rx="120" ry="55" fill="#f5eee0"/></g>
+ <g fill="#dfb85c"><ellipse cx="154" cy="245" rx="12" ry="6"/><ellipse cx="188" cy="226" rx="12" ry="6"/><ellipse cx="215" cy="258" rx="12" ry="6"/><ellipse cx="251" cy="237" rx="12" ry="6"/></g>
+ <path d="M104 186q30-54 61 0-31 47-61 0m-7-4q-10-30 16-42 16 26-16 42" fill="#d67d40"/><path d="M282 190q27-47 53 0-26 42-53 0" fill="#ca7045"/>
+ <path d="M493 195h214l-19 119q-87 40-174 0z" fill="#52624e" stroke="#eee4ce" stroke-width="7"/><path d="M500 203q100 31 201 0v61q-100 36-201 0z" fill="url(#porridge)"/><path d="M715 222q63-10 66 32" fill="none" stroke="#eee4ce" stroke-width="9" stroke-linecap="round"/><path d="M587 166q-15-23 0-43m45 43q-15-23 0-43" stroke="#fff8e5" stroke-width="8" fill="none" stroke-linecap="round"/>
+ <ellipse cx="1000" cy="274" rx="125" ry="78" fill="#f5ebd8" stroke="#718064" stroke-width="8"/><ellipse cx="1000" cy="249" rx="113" ry="55" fill="url(#porridge)"/><path d="M930 238q30-18 59 0m25 18q30-18 59 0" stroke="#ffe0a0" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M1058 168q30-32 53 0" fill="none" stroke="#68815b" stroke-width="10" stroke-linecap="round"/>
+</svg>

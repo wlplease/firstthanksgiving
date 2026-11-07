@@ -23,8 +23,8 @@ The SDK calls `sdk.actions.ready()` inside a Mini App and uses `sdk.actions.comp
 
 1. Choose a stable HTTPS origin. The domain must match the Farcaster Mini App registration.
 2. Use [Farcaster Developer Tools](https://farcaster.xyz/~/developers/mini-apps/manifest) to generate the signed `accountAssociation` for that domain.
-3. Set `APP_URL` to the origin and `FARCASTER_ACCOUNT_ASSOCIATION` to the signed JSON, then run `npm run art && npm run build:miniapp`.
-4. Deploy `dist/` at that origin. Validate the manifest and embed with the [Mini App Debug Tool](https://farcaster.xyz/~/developers/mini-apps).
+3. Set `APP_URL` and `FARCASTER_ACCOUNT_ASSOCIATION` in the deployment environment. For local builds, the generator also reads these values from the ignored `.env.local` file; `FARCASTER_ACCOUNT_ASSOCIATION_B64` is supported for JSON that is awkward to quote in dotenv files.
+4. Run `npm run art && npm run build:miniapp`, deploy `dist/` at that origin, then validate the manifest and embed with the [Mini App Debug Tool](https://farcaster.xyz/~/developers/mini-apps).
 
 Example for PowerShell:
 
@@ -34,7 +34,7 @@ $env:FARCASTER_ACCOUNT_ASSOCIATION = '{"header":"...","payload":"...","signature
 npm run build:miniapp
 ```
 
-The account association cannot be completed until the publishing domain and Farcaster owner are chosen. Localhost cannot be scraped by Farcaster; use a public development tunnel for embed testing.
+The account association must be generated for the exact publishing domain. Localhost cannot be scraped by Farcaster; use a public development tunnel for embed testing.
 
 ## Editorial note
 

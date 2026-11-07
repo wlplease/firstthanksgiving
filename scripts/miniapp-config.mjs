@@ -1,12 +1,21 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const raw = process.env.APP_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'https://shoreseason.vercel.app');
+const localEnv = {};
+try {
+  const contents = await readFile(resolve('.env.local'), 'utf8');
+  for (const line of contents.split(/\r?\n/)) {
+    const match = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (match) localEnv[match[1]] = match[2].trim().replace(/^(["'])(.*)\1$/, '$2');
+  }
+} catch {}
+const env = key => process.env[key] || localEnv[key];
+const raw = env('APP_URL') || (env('VERCEL_PROJECT_PRODUCTION_URL') ? `https://${env('VERCEL_PROJECT_PRODUCTION_URL')}` : 'https://shoreseason.vercel.app');
 const origin = new URL(raw);
 if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('APP_URL must be an HTTPS origin with no path.');
 const base = origin.origin;
 let association = null;
-const associationText = process.env.FARCASTER_ACCOUNT_ASSOCIATION || (process.env.FARCASTER_ACCOUNT_ASSOCIATION_B64 ? Buffer.from(process.env.FARCASTER_ACCOUNT_ASSOCIATION_B64, 'base64').toString('utf8') : '');
+const associationText = env('FARCASTER_ACCOUNT_ASSOCIATION') || (env('FARCASTER_ACCOUNT_ASSOCIATION_B64') ? Buffer.from(env('FARCASTER_ACCOUNT_ASSOCIATION_B64'), 'base64').toString('utf8') : '');
 if (associationText) {
   try { association = JSON.parse(associationText); }
   catch { throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must be valid JSON from Farcaster Developer Tools.'); }

@@ -551,6 +551,66 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 }
 @media(prefers-reduced-motion:reduce){.walkthrough-art img{animation:none}}
 
+/* Practical kitchen mode and recipe sharing */
+.cook-mode{margin:18px 0 22px;padding:22px;border:1px solid #c9d0c2;border-radius:5px;background:linear-gradient(145deg,#f5f5eb,#e8ede2);color:#2e4235}
+.cook-mode-launch{display:flex;align-items:center;gap:10px;margin:16px 0 22px;padding:13px 16px;border:1px solid #aab9a8;border-radius:4px;background:#e8eee4;color:#31523e;font-size:12px;font-weight:700}
+.cook-mode-launch span{margin-left:auto;color:#718072;font-size:10px;font-weight:500}
+.cook-mode-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.cook-mode-head .eyebrow{font-size:8px;letter-spacing:.14em;color:#8e593e}
+.cook-mode-head h3{margin:7px 0 0;font:500 25px/1.15 'Playfair Display',Georgia,serif;color:#30483a}
+.cook-mode-head>button,.cook-mode-tools button,.cook-timer-row button,.cook-step-actions button{border:1px solid #b8c3b5;border-radius:3px;background:#f7f7f0;color:#38513f;padding:9px 12px;font-size:10px;font-weight:700}
+.cook-mode-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:15px 0;padding-bottom:13px;border-bottom:1px solid #cdd5c7}
+.cook-mode-tools label{display:flex;align-items:center;gap:9px;color:#687768;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.cook-mode-tools input{width:62px;padding:7px;border:1px solid #bbc6b7;border-radius:3px;background:#fffdf7;color:#2c3c31;font-size:13px}
+.cook-ingredients{margin:0 0 20px;padding:11px 13px;border:1px solid #d1d8cd;border-radius:4px;background:#f8f8f1}
+.cook-ingredients summary{display:flex;justify-content:space-between;gap:12px;color:#3d5847;font-size:11px;font-weight:700;cursor:pointer}
+.cook-ingredients summary span{color:#849080;font-size:9px;font-weight:500}
+.cook-ingredients ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px;margin:12px 0 0;padding:0;list-style:none}
+.cook-ingredients li label{display:flex;align-items:flex-start;gap:8px;color:#59675b;font-size:11px;line-height:1.4;cursor:pointer}
+.cook-ingredients input{accent-color:#4d7456}
+.cook-step-count{margin-top:18px;color:#a25f40;font-size:9px;font-weight:800;letter-spacing:.17em}
+.cook-step-count span{color:#899285}
+.cook-step-text{min-height:86px;margin:12px 0;color:#31483a;font:500 clamp(21px,3vw,30px)/1.38 'Playfair Display',Georgia,serif}
+.cook-timer-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cook-timer-row strong{min-width:86px;color:#30473a;font:600 25px/1 'DM Sans',Arial,sans-serif;font-variant-numeric:tabular-nums}
+.cook-timer-row button:first-of-type{background:#355943;color:#fff9ec;border-color:#355943}
+.cook-timer-row button:disabled{opacity:.5}
+.cook-timer-status{min-height:15px;margin-top:5px;color:#657463;font-size:9px}
+.cook-progress{height:3px;margin:12px 0;background:#d6ddcf}.cook-progress i{display:block;height:100%;background:#b76543;transition:width .2s}
+.cook-step-actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+.cook-step-actions button:last-child{background:#355943;border-color:#355943;color:#fff9ec}
+.cook-step-actions button:disabled{opacity:.4}
+.cook-mode-note{display:block;margin-top:12px;color:#798477;font-size:9px;line-height:1.5}
+.modal-links .share-card-button{border:1px solid #aab9a8;background:#e8eee4;color:#36533f}
+.ingredient-guide-card button{display:block;margin:9px 0 7px;padding:0;border:0;border-bottom:1px solid #b7c0af;background:transparent;color:#425c47;text-align:left;font-size:9px;font-weight:700;line-height:1.5;cursor:pointer}
+.ingredient-guide-card button:hover{color:#a35134}
+.narration-transcript{margin:7px 0 18px;color:#536457;font-size:10px}
+.narration-transcript summary{display:inline-block;border-bottom:1px solid #bdc6b8;color:#637460;font-size:9px;font-weight:700;cursor:pointer}
+.narration-transcript p{max-width:680px;margin:9px 0 0;font-size:11px;line-height:1.65}
+.site-shell.moonlight .narration-transcript,.site-shell.moonlight .narration-transcript summary{color:#d5ddcf}
+.grocery-recipe-picks{margin:15px 0 12px;padding:12px;border:1px solid #d1d8cd;border-radius:4px;background:#eff1e8}
+.grocery-recipe-picks>strong{display:block;margin-bottom:7px;color:#8d5d42;font-size:8px;letter-spacing:.12em}
+.grocery-recipe-picks>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid #d9ded4;color:#394d3e;font-size:10px}
+.grocery-recipe-picks>div span{display:grid;gap:3px;font-weight:700}
+.grocery-recipe-picks small{color:#7a8678;font-size:8px;font-weight:400}
+.grocery-recipe-picks button{flex:none;padding:6px 8px;border:1px solid #c4ccc0;border-radius:3px;background:transparent;color:#7a5946;font-size:8px;font-weight:700}
+.grocery-recipe-picks>p{margin:6px 0 0;font-size:10px;line-height:1.5;color:#687367}
+.grocery-list li.checked span{text-decoration:line-through;color:#929a8d}
+.grocery-list input{accent-color:#4c7355}
+.site-shell.moonlight .grocery-recipe-picks{background:#3c4e48;border-color:#68786e}
+.site-shell.moonlight .grocery-recipe-picks>div{border-color:#617168;color:#f0eee4}
+.site-shell.moonlight .grocery-recipe-picks small,.site-shell.moonlight .grocery-recipe-picks>p{color:#c9d2c7}
+.site-shell.moonlight .grocery-recipe-picks button{border-color:#718075;color:#ead0a6}
+.site-shell.moonlight .cook-mode{background:#3c504a;border-color:#68786e;color:#f0eee4}
+.site-shell.moonlight .cook-mode-head h3,.site-shell.moonlight .cook-step-text,.site-shell.moonlight .cook-timer-row strong{color:#f2eddf}
+.site-shell.moonlight .cook-mode-tools button,.site-shell.moonlight .cook-mode-head>button,.site-shell.moonlight .cook-timer-row button,.site-shell.moonlight .cook-step-actions button{background:#435850;border-color:#718075;color:#f1eddf}
+.site-shell.moonlight .cook-timer-row button:first-of-type,.site-shell.moonlight .cook-step-actions button:last-child{background:#b76543;border-color:#b76543}
+.site-shell.moonlight .cook-mode-tools input,.site-shell.moonlight .cook-ingredients{background:#344741;border-color:#718075;color:#f1eddf}
+.site-shell.moonlight .cook-ingredients summary,.site-shell.moonlight .cook-ingredients li label{color:#e4e6d9}
+.site-shell.moonlight .cook-mode-tools,.site-shell.moonlight .cook-progress{border-color:#6b796e;background-color:#617066}
+.site-shell.moonlight .ingredient-guide-card button{color:#ead0a6;border-color:#7e8979}
+@media(max-width:700px){.cook-mode{margin:12px 0;padding:15px}.cook-mode-head h3{font-size:21px}.cook-mode-tools button{padding:8px;font-size:9px}.cook-ingredients ul{grid-template-columns:1fr}.cook-step-text{min-height:95px;font-size:22px}.cook-timer-row strong{font-size:22px}.cook-mode-launch{align-items:flex-start;flex-wrap:wrap}.cook-mode-launch span{width:100%;margin-left:27px}.modal-links .share-card-button{flex:1 1 100%}}
+
 /* Give the editorial panel a quiet coastal graphic while keeping recipe cards easy to scan. */
 @media(min-width:701px){
  main>.intro{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#f5f2e9 0%,#eff1e7 100%)}

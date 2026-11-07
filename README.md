@@ -19,7 +19,7 @@ The app uses a fixed viewport layout, sourced editorial cards, state and city se
 
 ## Farcaster publishing
 
-The SDK calls `sdk.actions.ready()` inside a Mini App and uses `sdk.actions.composeCast()` for in-app sharing. Production builds generate `fc:miniapp` and `fc:frame` embed tags and a manifest at `/.well-known/farcaster.json`.
+The SDK calls `sdk.actions.ready()` inside a Mini App and uses `sdk.actions.composeCast()` for in-app sharing. Production builds generate the current `fc:miniapp` embed tag and a manifest at `/.well-known/farcaster.json`.
 
 1. Choose a stable HTTPS origin. The domain must match the Farcaster Mini App registration.
 2. Use [Farcaster Developer Tools](https://farcaster.xyz/~/developers/mini-apps/manifest) to generate the signed `accountAssociation` for that domain.

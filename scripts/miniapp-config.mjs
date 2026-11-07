@@ -6,8 +6,9 @@ const origin = new URL(raw);
 if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash) throw new Error('APP_URL must be an HTTPS origin with no path.');
 const base = origin.origin;
 let association = null;
-if (process.env.FARCASTER_ACCOUNT_ASSOCIATION) {
-  try { association = JSON.parse(process.env.FARCASTER_ACCOUNT_ASSOCIATION); }
+const associationText = process.env.FARCASTER_ACCOUNT_ASSOCIATION || (process.env.FARCASTER_ACCOUNT_ASSOCIATION_B64 ? Buffer.from(process.env.FARCASTER_ACCOUNT_ASSOCIATION_B64, 'base64').toString('utf8') : '');
+if (associationText) {
+  try { association = JSON.parse(associationText); }
   catch { throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must be valid JSON from Farcaster Developer Tools.'); }
   if (!association || !['header','payload','signature'].every(key => typeof association[key] === 'string' && association[key])) throw new Error('FARCASTER_ACCOUNT_ASSOCIATION must contain the signed header, payload, and signature from Farcaster Developer Tools.');
 }
@@ -18,7 +19,7 @@ const manifest = {
     subtitle: 'Native foodways and recipes',
     description: 'Explore Native recipes and living foodways from Florida to the Great Lakes.',
     primaryCategory: 'education', tags: ['food','history','culture'],
-    heroImageUrl: `${base}/hero.png`, ogTitle: 'Shore & Season',
+    heroImageUrl: `${base}/hero.png`, ogTitle: 'Shore and Season',
     ogDescription: 'Native recipes and living foodways from Florida to the Great Lakes.', ogImageUrl: `${base}/hero.png`,
     supportsFullScreen: true
   }
@@ -28,7 +29,7 @@ const embed = {version:'1',imageUrl:`${base}/embed.png`,button:{title:'Explore f
 const file = resolve('dist/index.html');
 let html = await readFile(file,'utf8');
 const tag = json => JSON.stringify(json).replaceAll('&','&amp;').replaceAll("'",'&#39;').replaceAll('<','&lt;');
-html = html.replace('</head>', `<meta property="og:type" content="website"/><meta property="og:site_name" content="Shore & Season"/><meta property="og:title" content="Shore & Season"/><meta property="og:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta property="og:image" content="${base}/hero.png"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Shore & Season"/><meta name="twitter:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta name="twitter:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/><meta name="fc:frame" content='${tag({...embed,button:{...embed.button,action:{...embed.button.action,type:'launch_frame'}}})}'/></head>`);
+html = html.replace('</head>', `<meta property="og:type" content="website"/><meta property="og:site_name" content="Shore & Season"/><meta property="og:title" content="Shore & Season"/><meta property="og:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta property="og:image" content="${base}/hero.png"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Shore & Season"/><meta name="twitter:description" content="Native recipes and living foodways from Florida to the Great Lakes."/><meta name="twitter:image" content="${base}/hero.png"/><meta name="fc:miniapp" content='${tag(embed)}'/></head>`);
 await writeFile(file,html);
 await mkdir(resolve('dist/.well-known'),{recursive:true});
 await writeFile(resolve('dist/.well-known/farcaster.json'),JSON.stringify(manifest,null,2));

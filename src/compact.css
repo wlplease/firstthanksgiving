@@ -502,6 +502,10 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .walkthrough-art:after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(0deg,#172d28a6,transparent 76%);pointer-events:none}
 .walkthrough-art img{width:100%;height:100%;display:block;object-fit:cover;animation:walk-art-in .55s ease both}
 .walkthrough-art-mark{position:absolute;z-index:1;left:24px;bottom:16px;color:#fff1d5;font:42px Georgia;text-shadow:0 3px 15px #17251d66;animation:symbol-float 5s ease-in-out infinite}
+.walkthrough-map-stamp{position:absolute;z-index:2;right:18px;bottom:16px;display:grid;gap:4px;min-width:100px;padding:9px 11px;border:1px solid #fff2d577;border-radius:8px;background:#20382fb8;color:#fff5df;backdrop-filter:blur(9px);box-shadow:0 8px 25px #10261c40}
+.walkthrough-map-stamp span{font-size:6px;font-weight:800;letter-spacing:.17em}
+.walkthrough-map-stamp b{font:500 18px/1 'Playfair Display',Georgia,serif;letter-spacing:.04em}
+.walkthrough-map-stamp i{color:#ecc28d;font-size:12px;font-style:normal}
 .walkthrough-close{position:absolute;z-index:3;top:13px;right:13px;width:36px;height:36px;border:1px solid #ffffff90;border-radius:50%;background:#20392dbb;color:#fff8e9;font-size:23px;line-height:1;backdrop-filter:blur(8px)}
 .walkthrough-content{display:flex;min-width:0;min-height:0;flex-direction:column;align-items:flex-start;overflow:hidden;padding:clamp(24px,4vw,44px)}
 .walkthrough-reading{width:100%;min-height:0;flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b4bcae transparent}
@@ -509,6 +513,20 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .walkthrough-progress span:last-child{flex:none;color:#788273}
 .walkthrough-meter{width:100%;height:3px;margin:13px 0 20px;overflow:hidden;border-radius:4px;background:#dce0d5}
 .walkthrough-meter i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#55715a,#bf774b);transition:width .35s ease}
+.walkthrough-route{position:relative;display:flex;width:100%;margin:0 0 12px;padding:0;list-style:none}
+.walkthrough-route li{position:relative;z-index:1;display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;color:#9aa193}
+.walkthrough-route li:not(:last-child)::after{content:"";position:absolute;z-index:-1;top:9px;left:20px;right:0;height:1px;background:#d4d9ce}
+.walkthrough-route li>span{display:grid;place-items:center;width:19px;height:19px;border:1px solid #c8cec2;border-radius:50%;background:#f5f2e8;color:#7d8879;font-size:7px;font-weight:800}
+.walkthrough-route li>small{font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.walkthrough-route li.complete{color:#657d63}
+.walkthrough-route li.complete>span{border-color:#67826a;background:#67826a;color:#fff8e8}
+.walkthrough-route li.current{color:#98563a}
+.walkthrough-route li.current>span{border-color:#b86743;background:#b86743;color:#fff8e8;box-shadow:0 0 0 4px #b8674321}
+.walkthrough-completion{margin-top:15px;padding:12px;border:1px solid #d0d8ca;border-radius:7px;background:linear-gradient(135deg,#edf1e7,#f8f5e9)}
+.walkthrough-completion>span{display:block;margin-bottom:8px;color:#9a5a3b;font-size:7px;font-weight:800;letter-spacing:.14em}
+.walkthrough-completion>div{display:flex;flex-wrap:wrap;gap:7px}
+.walkthrough-completion button{min-height:33px;padding:7px 10px;border:1px solid #aebca9;border-radius:3px;background:#f9f8f0;color:#385240;font-size:9px;font-weight:700}
+.walkthrough-completion button:first-child{border-color:#385846;background:#385846;color:#fff8e8}
 .walkthrough-content h2{margin:0 0 12px;color:#31483a;font:500 clamp(30px,4vw,46px)/1.04 'Playfair Display',Georgia,serif;letter-spacing:-.045em;text-wrap:balance}
 .walkthrough-reading>p{margin:0;color:#5d695d;font-size:12px;line-height:1.65}
 .walkthrough-source{margin-top:17px;padding-top:12px;border-top:1px solid #d6d8cc;color:#8e593e;font-size:9px;font-weight:700;line-height:1.5}
@@ -527,6 +545,16 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-reading>p,.site-shell.moonlight~.walkthrough-backdrop .walkthrough-disclaimer{color:#cbd4ca}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-progress span:last-child{color:#c6d0c4}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-meter{background:#536258}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li:not(:last-child)::after{background:#657469}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li>span{border-color:#718073;background:#40534c;color:#d9ddcf}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li.complete{color:#c4d2b5}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li.complete>span{background:#728d70;color:#fff8e8}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li.current{color:#edbd91}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-route li.current>span{border-color:#b76543;background:#b76543;color:#fff8e8}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-completion{border-color:#647469;background:linear-gradient(135deg,#40534c,#3a4b48)}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-completion>span{color:#edbd91}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-completion button{border-color:#718073;background:#3d504c;color:#f1ecdf}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-completion button:first-child{border-color:#b76543;background:#b76543;color:#fff8e8}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-source{border-color:#667268;color:#e2b38a}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-listen{background:#40534d;border-color:#738277;color:#f1ecdf}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-actions button{background:#3d504c;border-color:#718073;color:#f1ecdf}
@@ -541,6 +569,12 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
  .walkthrough-content{padding:18px 19px max(17px,env(safe-area-inset-bottom))}
  .walkthrough-progress{font-size:7px}
  .walkthrough-meter{margin:9px 0 13px}
+ .walkthrough-route{margin-bottom:9px}
+ .walkthrough-route li:not(:last-child)::after{left:18px}
+ .walkthrough-route li>span{width:17px;height:17px}
+ .walkthrough-route li>small{font-size:6px}
+ .walkthrough-completion{margin-top:10px;padding:9px}
+ .walkthrough-completion button{min-height:31px;padding:6px 8px;font-size:8px}
  .walkthrough-content h2{font-size:clamp(27px,8vw,35px);margin-bottom:7px}
  .walkthrough-reading>p{font-size:10px;line-height:1.5}
  .walkthrough-source{margin-top:11px;padding-top:8px;font-size:8px}
@@ -652,6 +686,11 @@ body.moonlight-page .source-browser-blocked p{color:#d0d8ce}
 .screen-about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(240px,.8fr);align-items:center;gap:clamp(24px,7vw,100px);padding:clamp(25px,6vw,90px);background:linear-gradient(135deg,#e9e8dc,#f5f2e8 62%,#e9eee4)}
 .screen-about>.note-section{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;width:auto;margin:0;padding:0;background:transparent}
 .screen-about .note-section>p{grid-column:2;max-width:620px;font-size:clamp(12px,1.2vw,16px);line-height:1.8}
+.site-shell:not(.moonlight) .screen-about>.note-section{color:#344b3d}
+.site-shell:not(.moonlight) .screen-about .note-section .section-index{color:#a65032}
+.site-shell:not(.moonlight) .screen-about .note-section h2{color:#2d4034}
+.site-shell:not(.moonlight) .screen-about .note-section>p{color:#5d685f}
+.site-shell:not(.moonlight) .screen-about .note-symbol{color:#ad5b3b}
 .about-screen-note{max-width:440px;padding:clamp(20px,4vw,40px);border:1px solid #d0d5c9;border-radius:8px;background:#f8f7ef}
 .about-screen-note .eyebrow{color:#a35b3c;font-size:9px;letter-spacing:.14em}
 .about-screen-note p{color:#59675a;font:500 clamp(19px,2.5vw,30px)/1.45 'Playfair Display',Georgia,serif}
@@ -921,6 +960,19 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
  .roots-key-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:24px 18px}
 }
 
+/* Keep the hero copy readable over the shifting regional artwork in both themes. */
+.site-shell:not(.moonlight) main>.hero .hero-copy{background:linear-gradient(90deg,#f2f0e6 0%,#f2f0e6 78%,rgba(242,240,230,.94) 91%,rgba(242,240,230,0) 100%);color:#263c31}
+.site-shell:not(.moonlight) main>.hero .hero-kicker{color:#8e4e32}
+.site-shell:not(.moonlight) main>.hero h1[data-hero-title]{color:#263c31!important;opacity:1;visibility:visible;text-shadow:0 1px 0 #fff8e8}
+.site-shell:not(.moonlight) main>.hero .hero-copy>p[data-hero-description]{color:#43594a!important;opacity:1;visibility:visible}
+.site-shell.moonlight main>.hero .hero-copy{background:linear-gradient(90deg,#35444a 0%,#35444a 78%,rgba(53,68,74,.96) 91%,rgba(53,68,74,0) 100%);color:#f5f0e4}
+.site-shell.moonlight main>.hero .hero-kicker{color:#efbd8d}
+.site-shell.moonlight main>.hero h1[data-hero-title]{color:#f5f0e4!important;opacity:1;visibility:visible;text-shadow:0 2px 10px #14251f88}
+.site-shell.moonlight main>.hero .hero-copy>p[data-hero-description]{color:#e0e5d9!important;opacity:1;visibility:visible}
+.site-shell main>.hero .hero-copy{z-index:3;isolation:isolate}
+.site-shell main>.hero .hero-visual{z-index:1}
+.site-shell main>.hero.is-transitioning .hero-copy h1[data-hero-title]{opacity:1}
+
 /* Thumb-friendly screen controls with a subtle swipe affordance. */
 .screen-swipe-hint{display:inline-flex;align-items:center;gap:5px;color:#879183;font-size:7px;font-weight:800;letter-spacing:.13em;white-space:nowrap}
 .screen-swipe-hint b{color:#a76543;font-size:13px;font-weight:500;letter-spacing:0}
@@ -983,7 +1035,168 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 
 /* Easy-to-hit close controls for dialogs, source windows, and the story walk. */
 .modal-close,.source-browser-close,.walkthrough-close{width:44px;height:44px;min-width:44px;min-height:44px;display:grid;place-items:center;border-radius:50%;font-size:27px;line-height:1;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.modal-close,.source-browser-close{border:1px solid #bdc8bc;background:#f8f6ed;color:#2d4738;box-shadow:0 3px 14px #20372922}
+.walkthrough-close{background:#20392dcc;color:#fff8e9}
 .about-dialog .modal-close{width:44px;height:44px;min-width:44px;min-height:44px}
 .meal-dialog>.modal-close{width:44px;height:44px;min-width:44px;min-height:44px;line-height:1}
 .modal-close:focus-visible,.source-browser-close:focus-visible,.walkthrough-close:focus-visible{outline:3px solid #b56343;outline-offset:3px}
 @media(max-width:700px){.modal-close,.source-browser-close,.walkthrough-close{top:10px;right:10px}.about-dialog .modal-close{top:-5px;right:-5px}}
+
+/* Pantry uses one natural scroll surface with readable ingredient cards. */
+.screen-pantry{min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable}
+.screen-pantry>.ingredient-guide{height:auto;min-height:100%;margin:0 auto;overflow:visible;padding-bottom:28px}
+.screen-pantry .ingredient-guide>h3{margin:8px 0 10px;font-size:clamp(30px,3vw,42px);line-height:1.12}
+.screen-pantry .ingredient-guide>p{max-width:760px;margin:0;color:#606b60;font-size:clamp(12px,1vw,14px);line-height:1.65}
+.screen-pantry .ingredient-guide-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.screen-pantry .ingredient-guide-card{min-height:0;padding:clamp(13px,1.4vw,20px);border-radius:5px}
+.screen-pantry .ingredient-guide-card h4{font-size:clamp(16px,1.45vw,20px)}
+.screen-pantry .ingredient-guide-card p{font-size:clamp(10px,.9vw,12px);line-height:1.55}
+.screen-pantry .ingredient-guide-card button{font-size:10px;line-height:1.45}
+.screen-pantry .ingredient-guide-card a{font-size:9px;line-height:1.45}
+@media(max-width:980px){.screen-pantry .ingredient-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+ .screen-pantry{padding:14px 5% calc(20px + env(safe-area-inset-bottom,0px))}
+ .screen-pantry>.ingredient-guide{min-height:0;padding-bottom:16px}
+ .screen-pantry .ingredient-guide>h3{font-size:clamp(27px,7vw,34px)}
+ .screen-pantry .ingredient-guide>p{font-size:11px;line-height:1.55}
+ .screen-pantry .ingredient-guide-grid{grid-template-columns:1fr;gap:9px;margin-top:13px}
+ .screen-pantry .ingredient-guide-card{padding:13px 14px}
+ .screen-pantry .ingredient-guide-card h4{margin:6px 0;font-size:18px}
+ .screen-pantry .ingredient-guide-card p{margin-bottom:8px;font-size:11px;line-height:1.5}
+ .screen-pantry .ingredient-guide-card button{margin:6px 0;font-size:10px}
+ .screen-pantry .ingredient-guide-card a{font-size:9px}
+}
+
+/* Scale back Discover card artwork so recipe names and actions fit more easily. */
+@media(min-width:701px){.welcome-screen-body .story-card .card-art{flex-basis:clamp(128px,18vh,205px)}}
+@media(max-width:700px){.welcome-screen-body .story-card{grid-template-columns:30% minmax(0,1fr)}}
+
+/* Keep screen switching beside the Discover hero, within easy reach. */
+.welcome-screen-column{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.welcome-screen-column>.welcome-screen-hero{flex:1 1 0}
+.screen-nav-inline{display:flex;flex:none;height:46px;gap:0;padding:4px 3px;border-top:1px solid #d8d9ce;border-bottom:0}
+.screen-nav-inline .screen-tabs{flex:1;min-width:0;gap:0}
+.screen-nav-inline .screen-tabs button{flex:1;justify-content:center;min-width:0;gap:4px;padding:5px 3px;font-size:clamp(7px,.72vw,9px)}
+.screen-nav-inline .screen-tabs button{position:relative;z-index:2;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.screen-nav-inline .screen-tabs button i{font-size:7px}
+.screen-welcome-active>main>.screen-nav:not(.screen-nav-inline){display:none}
+.site-shell.moonlight .screen-nav-inline{background:#2d3d42;border-color:#586860;color:#f0ecdf}
+@media(max-width:700px){
+ .welcome-screen-column{flex:none;width:100%;height:auto}
+ .welcome-screen-column>.welcome-screen-hero{flex:0 0 auto}
+ .screen-nav-inline{height:48px;padding:2px max(7px,env(safe-area-inset-left,0px)) 2px max(7px,env(safe-area-inset-right,0px))}
+ .screen-nav-inline .screen-tabs button{flex-direction:column;gap:1px;min-height:42px;padding:3px 2px;font-size:9px}
+}
+
+/* Place the recipe art at top left, title beside it, and details below. */
+.screen-welcome .story-grid{flex:none;min-height:0;grid-auto-rows:minmax(clamp(190px,29vh,248px),auto);align-content:start}
+.screen-welcome .story-card{height:auto;min-height:0;align-self:stretch}
+.screen-welcome .story-card{display:grid;grid-template-columns:clamp(82px,24%,126px) minmax(0,1fr);grid-template-rows:auto auto auto auto;gap:0;padding:9px 12px 7px}
+.screen-welcome .story-card>.card-art{grid-column:1;grid-row:1 / span 2;width:min(100%,104px);height:auto;min-height:0;max-height:none;aspect-ratio:1;align-self:start;justify-self:start;flex:none;margin:0;border-radius:6px}
+.screen-welcome .story-card>.card-art .art-ring{width:68%;height:68%}
+.screen-welcome .story-card>.card-art .art-symbol{font-size:clamp(36px,5vw,58px)}
+.screen-welcome .story-card>.card-body{display:contents}
+.screen-welcome .story-card .card-body>.eyebrow{grid-column:2;grid-row:1;align-self:end;min-height:0;margin:0;padding:1px 8px 0;font-size:clamp(7px,.8vw,9px);line-height:1.3}
+.screen-welcome .story-card .card-body>strong{grid-column:2;grid-row:2;align-self:start;min-height:0;max-height:2.3em;margin:3px 8px 5px;font-size:clamp(17px,2vw,27px);line-height:1.12;-webkit-line-clamp:2}
+.screen-welcome .story-card .card-description{grid-column:1 / -1;grid-row:3;align-self:start;flex:none;min-height:0;max-height:none;margin:4px 0 3px;display:block;overflow:visible;white-space:normal;font-size:clamp(9px,.9vw,11px);line-height:1.4;-webkit-line-clamp:unset}
+
+/* Final hero contrast/visibility override: the copy always owns a solid panel. */
+.site-shell main>.hero{isolation:isolate;background:#f2f0e6}
+.site-shell main>.hero .hero-copy{display:flex!important;z-index:4;width:66%;max-width:66%;height:100%;overflow:visible;padding:clamp(16px,3vh,34px) clamp(15px,3vw,36px)!important;background:#f2f0e6;color:#263c31}
+.site-shell main>.hero .hero-kicker{display:block!important;max-width:100%;color:#8e4e32!important;opacity:1!important;visibility:visible!important}
+.site-shell main>.hero h1[data-hero-title]{display:block!important;max-width:100%;color:#263c31!important;opacity:1!important;visibility:visible!important;text-shadow:none!important;overflow:visible}
+.site-shell main>.hero .hero-copy>p[data-hero-description]{display:block!important;max-width:100%;color:#43594a!important;opacity:1!important;visibility:visible!important;overflow:visible}
+.site-shell main>.hero .hero-visual{z-index:1;width:34%;height:100%!important;inset:0 0 0 auto!important}
+.site-shell.moonlight main>.hero{background:#35444a}
+.site-shell.moonlight main>.hero .hero-copy{background:#35444a;color:#f5f0e4}
+.site-shell.moonlight main>.hero .hero-kicker{color:#efbd8d!important}
+.site-shell.moonlight main>.hero h1[data-hero-title]{color:#f5f0e4!important;text-shadow:0 2px 10px #14251f88!important}
+.site-shell.moonlight main>.hero .hero-copy>p[data-hero-description]{color:#e0e5d9!important}
+@media(max-width:700px){
+ .site-shell main>.hero{height:20%!important;min-height:112px!important;max-height:148px!important;flex:none}
+ .site-shell main>.hero .hero-copy{width:69%;max-width:69%;padding:9px 4% 8px!important}
+ .site-shell main>.hero .hero-kicker{font-size:6px;letter-spacing:.1em;line-height:1.2}
+ .site-shell main>.hero h1[data-hero-title]{font-size:clamp(22px,6.2vw,31px);line-height:.99;letter-spacing:-.045em;margin:5px 0 5px}
+ .site-shell main>.hero .hero-copy>p[data-hero-description]{font-size:clamp(8px,2.2vw,10px);line-height:1.25;margin:0}
+ .site-shell main>.hero .hero-visual{width:31%;height:100%!important}
+}
+@media(max-width:360px){
+ .site-shell main>.hero .hero-copy{width:72%;max-width:72%;padding-left:12px!important;padding-right:8px!important}
+ .site-shell main>.hero .hero-visual{width:28%}
+}
+
+/* The rendered Discover hero lives inside .shared-app-hero, above the swipe views. */
+.site-shell .shared-app-hero>.hero{background:#f2f0e6!important}
+.site-shell .shared-app-hero .hero-copy{display:flex!important;z-index:4;height:auto!important;min-height:0;align-self:stretch;background:#f2f0e6!important;color:#263c31!important;opacity:1!important;visibility:visible!important}
+.site-shell .shared-app-hero .hero-copy .hero-kicker{display:block!important;color:#8e4e32!important;opacity:1!important;visibility:visible!important}
+.site-shell .shared-app-hero .hero-copy h1[data-hero-title]{display:block!important;color:#263c31!important;opacity:1!important;visibility:visible!important;text-shadow:none!important}
+.site-shell .shared-app-hero .hero-copy>p[data-hero-description]{display:block!important;color:#43594a!important;opacity:1!important;visibility:visible!important}
+.site-shell.moonlight .shared-app-hero>.hero{background:#35444a!important}
+.site-shell.moonlight .shared-app-hero .hero-copy{background:#35444a!important;color:#f5f0e4!important}
+.site-shell.moonlight .shared-app-hero .hero-copy .hero-kicker{color:#efbd8d!important}
+.site-shell.moonlight .shared-app-hero .hero-copy h1[data-hero-title]{color:#f5f0e4!important;text-shadow:0 2px 10px #14251f88!important}
+.site-shell.moonlight .shared-app-hero .hero-copy>p[data-hero-description]{color:#e0e5d9!important}
+@media(max-width:700px){
+ .shared-app-hero{height:128px!important;min-height:128px!important}
+ .shared-app-hero>.hero{grid-template-columns:minmax(0,1fr) 29%!important}
+ .shared-app-hero .hero-copy{justify-content:center;padding:8px 12px!important}
+ .shared-app-hero .hero-copy .hero-kicker{font-size:6px!important;line-height:1.2;letter-spacing:.1em}
+ .shared-app-hero .hero-copy h1[data-hero-title]{margin:4px 0!important;font-size:clamp(21px,5.8vw,29px)!important;line-height:1!important;letter-spacing:-.045em}
+ .shared-app-hero .hero-copy>p[data-hero-description]{font-size:8px!important;line-height:1.25!important}
+}
+.screen-welcome .story-card .card-bottom{grid-column:1 / -1;grid-row:4;min-height:20px;margin:0;padding:5px 0 0;font-size:clamp(7px,.72vw,9px)}
+
+/* The hero and screen menu form a shared header above every swipe panel. */
+.shared-app-header{position:relative;z-index:4;display:flex;flex:none;flex-direction:column;width:100%;min-width:0;background:#f2f0e7}
+.shared-app-hero{height:clamp(156px,23vh,220px);min-height:0;overflow:hidden}
+.shared-app-hero>.hero{display:grid;width:100%;height:100%;min-height:0;grid-template-columns:minmax(0,1fr) minmax(220px,34%);background:linear-gradient(115deg,#ebe9df,#dce3d8)}
+.shared-app-hero .hero-copy{grid-column:1;position:relative;z-index:2;width:auto;max-width:none;justify-content:center;height:100%;min-width:0;padding:clamp(12px,2.2vh,22px) clamp(18px,4vw,54px)}
+.shared-app-hero .hero-copy .hero-kicker{display:block!important;font-size:clamp(7px,.7vw,9px)}
+.shared-app-hero .hero h1{max-width:100%;margin:5px 0;font-size:clamp(28px,3.2vw,48px);line-height:1;letter-spacing:-.05em}
+.shared-app-hero .hero-copy>p[data-hero-description]{display:block!important;width:100%;max-width:58ch;margin:0;font-size:clamp(9px,.85vw,11px);line-height:1.35}
+.shared-app-hero .hero-copy .primary-button,.shared-app-hero .hero-foot{display:none}
+.shared-app-hero .hero-visual{position:relative;grid-column:2;inset:auto;width:100%;height:100%;min-height:0;clip-path:none;background:#71806b}
+.shared-app-hero .hero-visual>img{object-fit:cover;object-position:center 48%}
+.shared-app-header>.screen-nav-inline{width:100%;height:42px;min-height:42px;padding:2px clamp(12px,3vw,34px);border-top:1px solid #d8d9ce;background:#f4f1e8}
+.shared-app-header .screen-nav-inline .screen-tabs{max-width:720px;margin:0 auto}
+.shared-app-header .screen-nav-inline .screen-tabs button{min-height:36px;font-size:10px}
+.site-shell.moonlight .shared-app-header{background:#35474a}
+.site-shell.moonlight .shared-app-hero>.hero{background:linear-gradient(115deg,#344449,#3c4d4c)}
+.site-shell.moonlight .shared-app-header>.screen-nav-inline{background:#2d3d42;border-color:#586860}
+.welcome-screen-body{display:block;width:100%;height:100%;min-width:0;min-height:0}
+.welcome-screen-body>.explore{width:100%;height:100%;min-width:0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.screen-welcome-active>main>.screen-nav:not(.screen-nav-inline){display:none}
+@media(max-width:700px){
+ .shared-app-hero{height:clamp(100px,15vh,124px)}
+ .shared-app-hero>.hero{grid-template-columns:minmax(0,1fr) 29%}
+ .shared-app-hero .hero-copy{padding:6px 12px}
+ .shared-app-hero .hero-copy .hero-kicker{font-size:6px;letter-spacing:.11em}
+ .shared-app-hero .hero h1{width:100%;max-width:100%;margin:2px 0;font-size:clamp(18px,5.1vw,29px);line-height:.98;overflow-wrap:normal}
+ .shared-app-hero .hero-copy>p[data-hero-description]{max-width:100%;font-size:8px;line-height:1.2}
+ .shared-app-header>.screen-nav-inline{height:42px;min-height:42px;padding:1px max(8px,env(safe-area-inset-left,0px)) 1px max(8px,env(safe-area-inset-right,0px))}
+ .shared-app-header .screen-nav-inline .screen-tabs button{min-height:38px;font-size:9px}
+ .welcome-screen-body>.explore{padding:9px 4% 12px}
+ .screen-welcome .story-grid{grid-auto-rows:minmax(168px,auto)}
+}
+@media(max-height:620px) and (max-width:700px){
+ .shared-app-hero{height:92px}
+ .shared-app-header>.screen-nav-inline{height:38px;min-height:38px}
+ .shared-app-header .screen-nav-inline .screen-tabs button{min-height:34px}
+}
+.walkthrough-food-threads{margin:16px 0 3px}
+.walkthrough-food-threads>div:first-child{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:8px}
+.walkthrough-food-threads>div:first-child span{color:#8d5739;font-size:8px;font-weight:800;letter-spacing:.13em}
+.walkthrough-food-threads>div:first-child small{color:#788274;font-size:8px}
+.walkthrough-food-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.walkthrough-food-grid button{display:grid;grid-template-columns:18px minmax(0,1fr) 12px;grid-template-rows:auto auto;align-items:center;min-width:0;padding:8px 9px;border:1px solid #d2d7c9;border-radius:5px;background:linear-gradient(135deg,#fbf9f0,#edf0e6);color:#344b3d;text-align:left;cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.walkthrough-food-grid button:hover,.walkthrough-food-grid button:focus-visible{transform:translateY(-1px);border-color:#9baa93;background:#f1f3e9;outline:2px solid #b5634340;outline-offset:1px}
+.walkthrough-food-grid button>b{grid-column:1;grid-row:1/3;color:#b36544;font:14px Georgia}
+.walkthrough-food-grid button>span{grid-column:2;grid-row:1;overflow:hidden;color:#35483a;font-size:10px;font-weight:750;text-overflow:ellipsis;white-space:nowrap}
+.walkthrough-food-grid button>small{grid-column:2;grid-row:2;overflow:hidden;color:#718071;font-size:7px;text-overflow:ellipsis;white-space:nowrap}
+.walkthrough-food-grid button>i{grid-column:3;grid-row:1/3;color:#a35b3c;font-size:12px;font-style:normal}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-threads>div:first-child span{color:#edbd91}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-threads>div:first-child small{color:#cbd4ca}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-grid button{border-color:#647469;background:linear-gradient(135deg,#40534c,#394c48);color:#f0ecdf}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-grid button>span{color:#f0ecdf}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-grid button>small{color:#cbd4ca}
+@media(max-width:700px){.walkthrough-food-threads{margin:11px 0 2px}.walkthrough-food-threads>div:first-child span{font-size:7px}.walkthrough-food-threads>div:first-child small{font-size:7px}.walkthrough-food-grid{gap:5px}.walkthrough-food-grid button{padding:7px 7px}.walkthrough-food-grid button>span{font-size:9px}.walkthrough-food-grid button>small{font-size:6px}}

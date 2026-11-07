@@ -29,6 +29,15 @@ const clips = [
     ]
   },
   {
+    file: 'foodways-field-walk.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, inviting] Welcome to the foodways field walk. Every trail begins with a place.'),
+      turn(maleVoice, '[calm, curious] Follow the shore, the river, and the foods people grow, gather, fish, and prepare.'),
+      turn(femaleVoice, '[thoughtful] Each food thread leads to a named community, its source, and a living story.'),
+      turn(maleVoice, '[gentle, encouraging] Choose an ingredient. Follow its story. Then bring what you learn to your own table.')
+    ]
+  },
+  {
     file: 'st-augustine-1565.mp3',
     inputs: [
       turn(femaleVoice, '[measured, reflective] In September 1565, Spanish colonists held a Mass of thanksgiving at St. Augustine, in Timucua homeland.'),
@@ -59,7 +68,10 @@ const clips = [
 
 const output = resolve('public/audio');
 await mkdir(output, { recursive: true });
-for (const clip of clips) {
+const requestedFile = process.argv[2];
+const clipsToGenerate = requestedFile ? clips.filter(clip => clip.file === requestedFile) : clips;
+if (!clipsToGenerate.length) throw new Error(`No voice clip configured for ${requestedFile}.`);
+for (const clip of clipsToGenerate) {
   const response = await fetch('https://api.elevenlabs.io/v1/text-to-dialogue?output_format=mp3_44100_128', {
     method: 'POST',
     headers: { 'xi-api-key': apiKey, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },

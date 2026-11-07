@@ -20,6 +20,31 @@ if (!femaleVoice || !maleVoice) {
 const turn = (voice_id, text) => ({ voice_id, text });
 const clips = [
   {
+    file: 'all-coasts-intro.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, welcoming] Welcome to All coasts. This is a foodways field walk from Florida to the Great Lakes.'),
+      turn(maleVoice, '[curious, reflective] Follow five shorelines through ingredients, places, and stories shared by distinct Native communities.'),
+      turn(femaleVoice, '[gentle, inviting] Choose a food thread to open its region, or follow the short trail to the table.'),
+      turn(maleVoice, '[thoughtful] No scores, no single story. Just a place to begin, and more to discover.')
+    ]
+  },
+  {
+    file: 'pantry-guide.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, thoughtful] Welcome to the pantry field guide. These ingredients connect to specific places and sources, not one universal Native pantry.'),
+      turn(maleVoice, '[calm, informative] Follow each note back to its publisher. Some plants require specialist knowledge and careful processing.'),
+      turn(femaleVoice, '[clear, caring] Do not forage from this guide; choose safe, cultivated, legally sourced ingredients.')
+    ]
+  },
+  {
+    file: 'feast-guide.mp3',
+    inputs: [
+      turn(femaleVoice, '[warm, welcoming] Welcome to the feast table. Start with a place and choose a meal guide, or bring in recipes you have already explored.'),
+      turn(maleVoice, '[clear, helpful] Adjust servings to shape the list. Each dish keeps its source and recipe status close by.'),
+      turn(femaleVoice, '[gentle, inviting] Gather the ingredients you need, then share the menu with your people.')
+    ]
+  },
+  {
     file: 'shore-season-welcome.mp3',
     inputs: [
       turn(femaleVoice, '[warm, welcoming] Welcome to Shore and Season, a journey from Florida along the Atlantic coast and toward the Great Lakes.'),

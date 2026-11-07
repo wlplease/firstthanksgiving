@@ -1398,3 +1398,61 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 /* Put the two social destinations first and give them matching visual weight. */
 .share-options #cast-share,.share-options #x-share{background:#e6ede4;border-color:#c5d0c2;color:#304a39}
 .site-shell.moonlight .share-options #cast-share,.site-shell.moonlight .share-options #x-share{background:#40534b;border-color:#879589;color:#fff4df}
+
+/* The first All coasts visit opens a cinematic, skippable field-guide prologue. */
+.walkthrough-dialog.walkthrough-intro{width:min(1080px,97vw);height:min(700px,92dvh);grid-template-columns:minmax(0,1.02fr) minmax(390px,.98fr);border-color:#cfb98f;background:linear-gradient(135deg,#fbf8ed,#eee9d9);box-shadow:0 34px 110px #07160fdb,0 0 0 1px #f4dfb455;animation:window-in .48s cubic-bezier(.18,.78,.2,1) both}
+.walkthrough-intro .walkthrough-art{background:radial-gradient(ellipse at 52% 29%,#f0d395 0 9%,transparent 10%),linear-gradient(145deg,#c8915e,#9b6247 58%,#314d42)}
+.walkthrough-intro .walkthrough-art img{animation:walk-art-in .8s ease both}
+.walkthrough-intro .walkthrough-map-stamp{min-width:130px;border-color:#f0d6a088;background:#172e27c9}
+.walkthrough-intro .walkthrough-content{padding:clamp(30px,4vw,52px)}
+.walkthrough-intro .walkthrough-meter i{background:linear-gradient(90deg,#5b795b,#d18a5e,#e7c990)}
+.walkthrough-intro-kicker{margin:0 0 8px;color:#a45d3c;font-size:8px;font-weight:800;letter-spacing:.15em}
+.walkthrough-intro .walkthrough-reading>p{max-width:52ch;color:#526254}
+.walkthrough-intro .walkthrough-food-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.walkthrough-intro .walkthrough-food-grid button{min-height:64px;border-radius:7px;background:linear-gradient(145deg,#fffdf7,#e9eee3);box-shadow:0 3px 10px #2a3b2910}
+.walkthrough-intro .walkthrough-food-grid button>b{font-size:15px}
+.walkthrough-intro .walkthrough-actions button:last-child{min-width:150px;background:linear-gradient(110deg,#355945,#526f50);box-shadow:0 5px 15px #314a3330}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-dialog.walkthrough-intro{border-color:#7c8069;background:linear-gradient(135deg,#3b4f4a,#344549);box-shadow:0 34px 110px #050f12e0,0 0 0 1px #dec08233}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-intro-kicker{color:#edbd91}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-intro .walkthrough-reading>p{color:#d6ded2}
+.site-shell.moonlight~.walkthrough-backdrop .walkthrough-intro .walkthrough-food-grid button{background:linear-gradient(145deg,#46594f,#3a4d49);box-shadow:0 3px 12px #13232155}
+@media(max-width:700px){.walkthrough-dialog.walkthrough-intro{width:min(540px,100%);height:min(720px,93dvh);grid-template-columns:1fr;grid-template-rows:minmax(110px,25%) minmax(0,1fr)}.walkthrough-intro .walkthrough-art{min-height:0}.walkthrough-intro .walkthrough-content{padding:16px 17px max(14px,env(safe-area-inset-bottom))}.walkthrough-intro .walkthrough-food-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.walkthrough-intro .walkthrough-food-grid button{min-height:52px;padding:6px 7px}.walkthrough-intro-kicker{font-size:7px;margin-bottom:5px}}
+@media(prefers-reduced-motion:reduce){.walkthrough-dialog.walkthrough-intro{animation:none}.walkthrough-intro .walkthrough-art img{animation:none}}
+
+/* Let the user's own discoveries become the app's quiet collection mechanic. */
+.old-lore-toggle{position:relative;overflow:visible}
+.field-journal-count{position:absolute;top:-6px;right:-7px;display:grid;place-items:center;min-width:15px;height:15px;padding:0 3px;border:1px solid #fff7e9;border-radius:10px;background:#365944;color:#fff9e9;font:700 8px/1 'DM Sans',sans-serif;box-shadow:0 2px 5px #15281c44;animation:journal-mark-in .28s cubic-bezier(.2,.8,.2,1) both}
+@keyframes journal-mark-in{from{opacity:0;transform:scale(.5) rotate(-12deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+.card-art{position:relative}
+.card-collection-stamp{position:absolute;z-index:4;top:4px;right:4px;display:inline-flex;align-items:center;gap:3px;max-width:calc(100% - 8px);overflow:hidden;padding:4px 6px;border:1px solid #fff2d566;border-radius:12px;background:#263f35d9;color:#fff6e3;font:700 6px/1 'DM Sans',sans-serif;letter-spacing:.055em;text-overflow:ellipsis;white-space:nowrap;box-shadow:0 2px 8px #17271e44;backdrop-filter:blur(5px)}
+.site-shell.moonlight .field-journal-count{border-color:#34474a;background:#dfa16f;color:#2a3833}
+.site-shell.moonlight .card-collection-stamp{border-color:#f0d6a088;background:#213a35df;color:#fff4dc}
+.screen-heading>.narration-button{margin:10px auto 0}
+.screen-pantry .ingredient-guide>.narration-button{margin:7px 0 3px}
+.screen-table .meal-teaser-art{position:relative;isolation:isolate}
+.screen-table .meal-teaser-art:before{content:"";position:absolute;z-index:-1;inset:-8px;border:1px solid #e1c997;border-radius:50%;box-shadow:0 0 0 8px #e0cfaa3b,0 0 28px #c6955752;animation:field-stamp-arrive .8s ease both}
+.site-shell.moonlight .screen-table{background:radial-gradient(ellipse at 50% 0%,#554d3d 0,transparent 55%),#303f41}
+.site-shell.moonlight .screen-pantry{background:radial-gradient(ellipse at 88% 2%,#4a5143 0,transparent 40%),#303f41}
+@media(max-width:700px){.field-journal-count{top:-5px;right:-5px;min-width:14px;height:14px;font-size:7px}.card-collection-stamp{top:3px;right:3px;padding:3px 4px;font-size:5px}.screen-heading>.narration-button{margin-top:7px}}
+@media(prefers-reduced-motion:reduce){.field-journal-count,.screen-table .meal-teaser-art:before{animation:none}}
+
+/* Recipe cards use the hero's warm editorial finish, while keeping the compact grid. */
+.screen-welcome .story-card{position:relative;border:1px solid #d8d1bd;border-radius:9px;background:linear-gradient(145deg,#fffdf7,#f4f1e7);box-shadow:0 3px 10px #263a2810,0 12px 24px #263a2808;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.screen-welcome .story-card:before{content:"";position:absolute;z-index:3;top:0;left:10px;right:10px;height:2px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,#bd6845,#e5c98f 52%,#6e8c70);opacity:.72;pointer-events:none}
+.screen-welcome .story-card:hover,.screen-welcome .story-card:focus-visible{transform:translateY(-3px);border-color:#b88a62;box-shadow:0 8px 18px #263a2820,0 20px 34px #263a2812;outline:2px solid #b87855;outline-offset:2px}
+.screen-welcome .story-card>.card-art{overflow:hidden;border:1px solid #e4d7bb;box-shadow:0 4px 12px #493b281c;background:#d8c79f;transition:border-color .22s ease,box-shadow .22s ease}
+.screen-welcome .story-card>.card-art:after{display:block;inset:0;border:0;background:linear-gradient(145deg,#fff5d322,transparent 48%,#213a2930);pointer-events:none}
+.screen-welcome .story-card>.card-art img{filter:saturate(1.08) contrast(1.025);transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .3s ease}
+.screen-welcome .story-card:hover>.card-art img,.screen-welcome .story-card:focus-visible>.card-art img{transform:scale(1.07);filter:saturate(1.18) contrast(1.04)}
+.screen-welcome .story-card>.card-art .art-ring{border-color:#f3e2bcaa;box-shadow:0 0 0 5px #fff1d51a,0 0 28px #fff2d844}
+.screen-welcome .recipe-story-card .card-body>strong{color:#293e32;text-shadow:0 1px #fff9}
+.screen-welcome .recipe-story-card .recipe-card-quick{color:#52604e}
+.screen-welcome .recipe-story-card .recipe-card-quick b{color:#a45c3d}
+.site-shell.moonlight .screen-welcome .story-card{border-color:#647366;background:linear-gradient(145deg,#465750,#394b48);box-shadow:0 4px 12px #101e2350,0 14px 28px #101e2328}
+.site-shell.moonlight .screen-welcome .story-card:before{background:linear-gradient(90deg,#d28a60,#e7c98f 52%,#a9c0a0)}
+.site-shell.moonlight .screen-welcome .story-card:hover,.site-shell.moonlight .screen-welcome .story-card:focus-visible{border-color:#d0a274;box-shadow:0 10px 22px #0b17174d,0 22px 38px #0b171733;outline-color:#d0a274}
+.site-shell.moonlight .screen-welcome .story-card>.card-art{border-color:#958667;box-shadow:0 4px 14px #101c1e66}
+.site-shell.moonlight .screen-welcome .recipe-story-card .card-body>strong{color:#f4eddd;text-shadow:0 1px #1a2929}
+.site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-quick{color:#d9ddcf}
+.site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-quick b{color:#edbd8e}
+@media(prefers-reduced-motion:reduce){.screen-welcome .story-card,.screen-welcome .story-card>.card-art img{transition:none}.screen-welcome .story-card:hover,.screen-welcome .story-card:focus-visible{transform:none}}

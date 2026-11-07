@@ -1229,3 +1229,105 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-grid button>span{color:#f0ecdf}
 .site-shell.moonlight~.walkthrough-backdrop .walkthrough-food-grid button>small{color:#cbd4ca}
 @media(max-width:700px){.walkthrough-food-threads{margin:11px 0 2px}.walkthrough-food-threads>div:first-child span{font-size:7px}.walkthrough-food-threads>div:first-child small{font-size:7px}.walkthrough-food-grid{gap:5px}.walkthrough-food-grid button{padding:7px 7px}.walkthrough-food-grid button>span{font-size:9px}.walkthrough-food-grid button>small{font-size:6px}}
+
+/* Keep the shared Discover hero compact while preserving the whole welcome path. */
+.shared-app-hero{height:clamp(138px,19vh,190px)}
+@media(max-width:700px){.shared-app-hero{height:clamp(92px,13vh,110px)}.screen-welcome .story-card{grid-template-rows:auto auto auto auto auto auto auto}}
+@media(max-height:620px) and (max-width:700px){.shared-app-hero{height:88px}}
+
+/* Recipe cards summarize ingredient count and key foods; the full list stays in the recipe. */
+.screen-welcome .recipe-story-card .recipe-card-quick{grid-column:1/-1;grid-row:4}
+.screen-welcome .recipe-story-card .recipe-card-ingredients{grid-column:1/-1;grid-row:5;display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.35}
+.screen-welcome .recipe-story-card .recipe-card-source{grid-column:1/-1;grid-row:6}
+.screen-welcome .recipe-story-card .card-bottom{grid-column:1/-1;grid-row:7}
+
+/* Slow, tactile motion for the rotating hero artwork and its changing story. */
+.shared-app-hero .hero-visual>img[data-hero-image]{transform-origin:center 52%;animation:hero-image-drift 22s ease-in-out infinite alternate;will-change:transform,opacity}
+.shared-app-hero .hero h1[data-hero-title],.shared-app-hero .hero .hero-kicker,.shared-app-hero .hero-copy>p[data-hero-description]{transition:opacity .42s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .42s ease}
+.shared-app-hero .hero h1[data-hero-title]{will-change:opacity,transform}
+.shared-app-hero .hero.is-transitioning h1[data-hero-title]{opacity:.3;transform:translateY(8px);filter:blur(1px)}
+.shared-app-hero .hero.is-transitioning .hero-kicker{opacity:.45;transform:translateY(5px)}
+.shared-app-hero .hero.is-transitioning .hero-copy>p[data-hero-description]{opacity:.4;transform:translateY(5px)}
+.shared-app-hero .hero.is-transitioning .hero-visual>img[data-hero-image]{opacity:.56;filter:saturate(.82) brightness(.96)}
+@keyframes hero-image-drift{0%{transform:scale(1.015) translate3d(-.5%,.25%,0)}100%{transform:scale(1.075) translate3d(.5%,-.35%,0)}}
+@media(prefers-reduced-motion:reduce){.shared-app-hero .hero-visual>img[data-hero-image]{animation:none;transform:none;will-change:auto}.shared-app-hero .hero h1[data-hero-title],.shared-app-hero .hero .hero-kicker,.shared-app-hero .hero-copy>p[data-hero-description]{transition:none;transform:none;filter:none;will-change:auto}}
+
+/* Keep every recipe-card detail on its own track; long labels truncate inside their cell. */
+.screen-welcome .recipe-story-card{grid-template-rows:repeat(7,auto)}
+.screen-welcome .recipe-story-card .recipe-card-quick{min-width:0;overflow-wrap:anywhere}
+.screen-welcome .recipe-story-card .recipe-card-source{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.screen-welcome .recipe-story-card .card-bottom{display:flex;min-width:0;overflow:hidden;align-items:center;gap:7px}
+.screen-welcome .recipe-story-card .card-bottom>span:first-child{flex:1 1 auto;min-width:0;max-width:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.screen-welcome .recipe-story-card .card-bottom>span:last-child{flex:0 0 auto;white-space:nowrap}
+
+/* Make Share the clear, high-contrast action in moonlight mode. */
+.site-shell.moonlight .topbar #share-open{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding-inline:13px;border:1px solid #f1d7a5;border-radius:5px;background:linear-gradient(135deg,#efd39a,#dba36f);color:#263b32;box-shadow:0 2px 9px #101e2466,inset 0 1px #fff5d9a6;font-weight:800;text-shadow:none}
+.site-shell.moonlight .topbar #share-open:hover{background:linear-gradient(135deg,#f5dfa9,#e6b47b);border-color:#fff0c4;filter:none;transform:translateY(-1px)}
+.site-shell.moonlight .topbar #share-open:active{transform:translateY(0);box-shadow:inset 0 2px 5px #6f4b2b55}
+.site-shell.moonlight .topbar #share-open:focus-visible{outline:2px solid #f4dfa9;outline-offset:3px}
+@media(max-width:700px){.site-shell.moonlight .topbar #share-open{min-height:29px;padding-inline:9px;border-radius:4px;font-size:8px}}
+
+/* Recipe descriptions must remain readable in both themes and expand instead of clipping. */
+.screen-welcome .recipe-story-card .card-description{grid-column:1/-1;grid-row:3;width:100%;min-width:0;height:auto;min-height:0;max-height:none;display:block!important;overflow:visible;white-space:normal;overflow-wrap:anywhere;text-overflow:clip;-webkit-line-clamp:unset;line-clamp:unset;flex:none;font-size:clamp(10px,1vw,12px);line-height:1.45;color:#465447}
+.site-shell.moonlight .screen-welcome .recipe-story-card .card-description{color:#f0eee4!important;opacity:1!important;visibility:visible!important;text-shadow:none!important}
+.screen-welcome .story-grid{grid-auto-rows:minmax(clamp(220px,34vh,290px),auto)}
+@media(max-width:700px){.screen-welcome .story-grid{grid-auto-rows:minmax(clamp(210px,34vh,270px),auto)}.screen-welcome .recipe-story-card .card-description{font-size:clamp(10px,2.8vw,12px);line-height:1.4}}
+
+/* Region-specific place chips sit consistently right under the search field. */
+.region-area-tabs{margin:7px 0 10px}
+@media(max-width:700px){.region-area-tabs{margin:5px 0 8px}}
+
+/* About: a readable, source-first field guide with its own natural scroll surface. */
+.screen-about{display:block;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;align-content:initial;padding:clamp(22px,4vh,48px) clamp(18px,6vw,92px) calc(28px + env(safe-area-inset-bottom,0px));background:radial-gradient(ellipse at 12% 8%,#e4d5b7 0,transparent 34%),linear-gradient(135deg,#ece9dd,#f7f4ea 58%,#e5ece4)}
+.screen-about>.note-section{position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) minmax(210px,.68fr);align-items:center;gap:clamp(16px,3vw,36px);width:100%;max-width:1180px;margin:0 auto clamp(28px,5vh,58px);padding:clamp(20px,3vw,38px);overflow:hidden;border:1px solid #d5d2c1;border-radius:12px;background:linear-gradient(115deg,#fbf8edeb,#f2f0e5ed);box-shadow:0 18px 45px #3c4c3513}
+.screen-about>.note-section:after{content:"";position:absolute;right:-42px;top:-110px;width:270px;height:270px;border:1px solid #bd9b6b55;border-radius:50%;box-shadow:0 0 0 18px #bd9b6b14,0 0 0 38px #bd9b6b0d;pointer-events:none}
+.screen-about .note-symbol{z-index:1;display:grid;place-items:center;width:54px;height:54px;border:1px solid #c99261;border-radius:50%;background:#f6edda;color:#ad5b3b;font-size:32px}
+.screen-about .note-section>div,.screen-about .note-section>p{position:relative;z-index:1;grid-column:auto;max-width:none;margin:0}
+.screen-about .note-section .section-index{margin-bottom:8px;font-size:8px;letter-spacing:.16em}
+.screen-about .note-section h2{margin:0;font-size:clamp(25px,3vw,42px);line-height:1.08;letter-spacing:-.035em}
+.screen-about .note-section>p{font-size:clamp(10px,.95vw,13px);line-height:1.65}
+.about-reading-key,.about-care-band{width:100%;max-width:1180px;margin:0 auto clamp(28px,5vh,58px)}
+.about-section-heading{max-width:700px;margin:0 0 16px}
+.about-section-heading>.eyebrow,.about-care-band .eyebrow{color:#a35b3c;font-size:8px;letter-spacing:.15em}
+.about-section-heading h3,.about-care-band h3{margin:6px 0 7px;color:#324839;font:500 clamp(25px,3vw,38px)/1.1 'Playfair Display',Georgia,serif;letter-spacing:-.03em}
+.about-section-heading p,.about-care-band p{max-width:680px;margin:0;color:#637064;font-size:clamp(10px,.95vw,12px);line-height:1.6}
+.about-key-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.about-key-card{position:relative;min-width:0;min-height:175px;padding:19px 20px;border:1px solid #d0d6c9;border-radius:8px;background:linear-gradient(145deg,#fbfaf3,#eef0e6);box-shadow:0 8px 24px #3045360d}
+.about-key-card:before{content:"";position:absolute;top:0;left:18px;right:18px;height:2px;background:#bd7952}
+.about-key-card.history:before{background:#768e82}.about-key-card.adaptation:before{background:#bd9a5c}
+.about-key-mark{display:grid;place-items:center;width:34px;height:34px;margin-bottom:12px;border:1px solid #d8c6a4;border-radius:50%;background:#f5eddc;color:#a45c3a;font:20px Georgia}
+.about-key-card.history .about-key-mark{color:#506c61;border-color:#c4d1c4;background:#e9efe7}.about-key-card.adaptation .about-key-mark{color:#8c7043}
+.about-key-label{display:block;color:#986043;font-size:7px;font-weight:800;letter-spacing:.12em;line-height:1.4}
+.about-key-card h4{margin:7px 0 6px;color:#34483a;font:500 clamp(16px,1.45vw,20px)/1.15 'Playfair Display',Georgia,serif}
+.about-key-card p{margin:0;color:#647064;font-size:9px;line-height:1.55}
+.about-care-band{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);align-items:center;gap:clamp(18px,4vw,48px);padding:clamp(20px,3vw,38px);border:1px solid #c8d1c4;border-radius:12px;background:linear-gradient(120deg,#e1e8dc,#f4f0e4 64%,#f8f5e9);box-shadow:0 14px 34px #30453610}
+.about-care-art{position:relative;display:grid;place-items:center;min-height:150px;overflow:hidden;border-radius:8px;background:radial-gradient(circle at 52% 35%,#efd59b 0 19%,#d6a46e 20% 21%,transparent 22%),linear-gradient(150deg,#d29462,#b66447 55%,#526b58)}
+.about-care-art:before,.about-care-art:after{content:"";position:absolute;left:-10%;width:120%;height:65%;border:1px solid #f3e2bc77;border-radius:50% 50% 0 0}
+.about-care-art:before{bottom:-43%;background:#526c58;transform:rotate(-9deg)}.about-care-art:after{bottom:-57%;background:#344f45;transform:rotate(8deg)}
+.about-care-art span{position:relative;z-index:1;color:#fff0d5;font:62px Georgia;text-shadow:0 3px 16px #4d332d44}
+.about-care-art i{position:absolute;z-index:2;left:14%;top:18%;width:72%;height:64%;border:1px solid #f6e7c577;border-radius:50%;transform:rotate(-18deg)}
+.about-care-art b{position:absolute;z-index:2;left:20%;right:20%;bottom:13px;border-top:1px solid #f4dfbeaa}
+.about-care-band h3{max-width:540px;margin:8px 0}
+.about-care-band p{max-width:620px}
+.about-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.about-actions button{min-height:36px;padding:8px 12px;border:1px solid #bdc9ba;border-radius:4px;background:#f7f6ee;color:#3c5743;font-size:9px;font-weight:750;cursor:pointer}
+.about-actions button:first-child{border-color:#365846;background:#365846;color:#fff8e9}.about-actions button span{padding-left:8px}
+.about-actions button:hover{transform:translateY(-1px);border-color:#a95d3d}
+.site-shell.moonlight .screen-about{background:radial-gradient(ellipse at 12% 8%,#5d5948 0,transparent 34%),linear-gradient(135deg,#344449,#3c4d4c 58%,#36494a)}
+.site-shell.moonlight .screen-about>.note-section{border-color:#69796d;background:linear-gradient(115deg,#3d504beF,#35484aef);box-shadow:0 18px 45px #101e2355}
+.site-shell.moonlight .screen-about>.note-section:after{border-color:#e2bd8455;box-shadow:0 0 0 18px #e2bd8414,0 0 0 38px #e2bd840d}
+.site-shell.moonlight .screen-about .note-symbol{border-color:#b99265;background:#4a554a;color:#efd09a}
+.site-shell.moonlight .screen-about .note-section h2,.site-shell.moonlight .about-section-heading h3,.site-shell.moonlight .about-care-band h3{color:#f2edde}
+.site-shell.moonlight .screen-about .note-section>p,.site-shell.moonlight .about-section-heading p,.site-shell.moonlight .about-care-band p{color:#d2dacf}
+.site-shell.moonlight .about-section-heading>.eyebrow,.site-shell.moonlight .about-care-band .eyebrow{color:#e8b783}
+.site-shell.moonlight .about-key-card{border-color:#68786b;background:linear-gradient(145deg,#40534b,#394b48);box-shadow:0 8px 24px #13252244}
+.site-shell.moonlight .about-key-mark{border-color:#877957;background:#4b564a;color:#f0c48e}
+.site-shell.moonlight .about-key-card.history .about-key-mark{border-color:#6c8172;background:#40554e;color:#c4d5c5}
+.site-shell.moonlight .about-key-card.adaptation .about-key-mark{color:#efd09a}
+.site-shell.moonlight .about-key-label{color:#edbc8c}
+.site-shell.moonlight .about-key-card h4{color:#f2edde}
+.site-shell.moonlight .about-key-card p{color:#d0d8ce}
+.site-shell.moonlight .about-care-band{border-color:#65796a;background:linear-gradient(120deg,#3b5149,#3e5048 64%,#4a5045);box-shadow:0 14px 34px #101e2344}
+.site-shell.moonlight .about-actions button{border-color:#748171;background:#43564e;color:#f0ecdf}
+.site-shell.moonlight .about-actions button:first-child{border-color:#c17a51;background:#c17a51;color:#fff7e8}
+@media(max-width:760px){.screen-about{padding:16px 4% calc(20px + env(safe-area-inset-bottom,0px))}.screen-about>.note-section{grid-template-columns:38px minmax(0,1fr);gap:9px 12px;margin-bottom:18px;padding:16px;border-radius:9px}.screen-about .note-symbol{width:34px;height:34px;font-size:21px}.screen-about .note-section h2{font-size:clamp(24px,7vw,34px)}.screen-about .note-section>p{grid-column:2;font-size:10px;line-height:1.5}.about-reading-key,.about-care-band{margin-bottom:20px}.about-section-heading{margin-bottom:10px}.about-section-heading h3,.about-care-band h3{font-size:25px}.about-section-heading p,.about-care-band p{font-size:10px}.about-key-grid{grid-template-columns:1fr;gap:8px}.about-key-card{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:10px;min-height:0;padding:12px 13px}.about-key-card:before{left:12px;right:12px}.about-key-mark{grid-column:1;grid-row:1/4;width:30px;height:30px;margin:1px 0 0}.about-key-label{grid-column:2;grid-row:1;font-size:7px}.about-key-card h4{grid-column:2;grid-row:2;margin:4px 0;font-size:17px}.about-key-card p{grid-column:2;grid-row:3;font-size:9px}.about-care-band{grid-template-columns:1fr;gap:13px;padding:13px;border-radius:9px}.about-care-art{min-height:102px}.about-care-art span{font-size:44px}.about-actions{gap:6px;margin-top:12px}.about-actions button{flex:1 1 145px;min-height:38px;font-size:8px}}

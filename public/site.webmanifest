@@ -1,0 +1,11 @@
+{
+  "name": "First Table — Native Foodways Atlas",
+  "short_name": "First Table",
+  "description": "Explore Native foodways along the East Coast.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f2f1e9",
+  "theme_color": "#294b3d",
+  "icons": [{"src":"/icon.png","sizes":"1024x1024","type":"image/png","purpose":"any maskable"}]
+}

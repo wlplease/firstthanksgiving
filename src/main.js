@@ -682,7 +682,20 @@ function bind() {
 function closeModal(){const closingStory=selected;selected=null;cookModeStory=null;stopCookTimer();cookTimerSeconds=0;void releaseCookWakeLock();const url=new URL(location.href);url.searchParams.delete('story');history.replaceState(null,'',url);render();if(closingStory)document.querySelector(`[data-story="${closingStory}"]`)?.focus();}
 document.addEventListener('click',event=>{const screenTab=event.target.closest('[data-screen-go]');if(screenTab){event.preventDefault();goToScreen(Number(screenTab.dataset.screenGo));return;}const screenStep=event.target.closest('[data-screen-step]');if(screenStep){event.preventDefault();goToScreen(activeScreenIndex+Number(screenStep.dataset.screenStep));return;}const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||link.hasAttribute('download'))return;const target=new URL(link.href,location.href);if((target.protocol==='https:'||target.protocol==='http:')&&target.origin!==location.origin){if(link.classList.contains('external-source-direct')){if(inMiniApp&&sdkInstance?.actions?.openUrl){event.preventDefault();try{Promise.resolve(sdkInstance.actions.openUrl({url:target.href})).catch(()=>{});}catch{}}return;}if(link.classList.contains('source-browser-open'))return;event.preventDefault();openSourceWindow(target.href,link.textContent.trim());}},true);
 document.addEventListener('keydown',e=>{if(walkthroughOpen&&e.key==='Tab'){const dialog=document.querySelector('.walkthrough-dialog'),items=[...dialog.querySelectorAll('button:not(:disabled),a[href]')];if(items.length){const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}else if(!dialog.contains(document.activeElement)){e.preventDefault();first.focus();}}}if(e.key==='Escape'){if(walkthroughOpen){stopNarration();walkthroughOpen=false;render();document.querySelector('#old-lore-toggle')?.focus();}else if(musicOpen){musicOpen=false;syncMusicDock();}else if(groceryOpen){groceryOpen=false;render();}else if(shareOpen){const returnToGrocery=shareGrocery;shareOpen=false;shareMeal=false;shareGrocery=false;groceryOpen=returnToGrocery;render();}else if(mealOpen){mealOpen=false;const url=new URL(location.href);url.searchParams.delete('meal');url.searchParams.delete('courses');history.replaceState(null,'',url);render();}else if(selected)closeModal();}if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!e.target.matches('input,textarea,select')&&!selected&&!shareOpen&&!groceryOpen&&!musicOpen&&!mealOpen&&!walkthroughOpen&&!contributeOpen&&!document.querySelector('dialog[open]')){e.preventDefault();goToScreen(activeScreenIndex+(e.key==='ArrowRight'?1:-1));}});
-window.addEventListener('resize',()=>{page=0;render();});
+// Mobile keyboards and Mini App chrome often change height without changing the
+// layout breakpoint. CSS can handle those changes without discarding UI state.
+let layoutWidth=window.innerWidth;
+let resizeFrame=0;
+window.addEventListener('resize',()=>{
+  if(window.innerWidth===layoutWidth)return;
+  layoutWidth=window.innerWidth;
+  cancelAnimationFrame(resizeFrame);
+  resizeFrame=requestAnimationFrame(()=>{
+    const pageSize=layoutWidth<700?1:layoutWidth<1180?2:3;
+    page=Math.min(page,Math.max(0,Math.ceil(matchingStories().length/pageSize)-1));
+    render();
+  });
+});
 render();
 recordAppPageView();
 import('@farcaster/miniapp-sdk').then(async ({sdk})=>{

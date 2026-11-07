@@ -1456,3 +1456,62 @@ body.moonlight-page .regional-roots a,body.moonlight-page .history-note>a,body.m
 .site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-quick{color:#d9ddcf}
 .site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-quick b{color:#edbd8e}
 @media(prefers-reduced-motion:reduce){.screen-welcome .story-card,.screen-welcome .story-card>.card-art img{transition:none}.screen-welcome .story-card:hover,.screen-welcome .story-card:focus-visible{transform:none}}
+
+/* Give imagery a consistent editorial finish across the collection. */
+.hero-visual>img,.card-art img,.table-recipe-art img{filter:saturate(1.04) contrast(1.035)}
+.hero-visual:before{background:linear-gradient(90deg,#20362b36,transparent 58%),linear-gradient(0deg,#20362b35,transparent 48%)}
+.screen-welcome .story-card>.card-art,.table-recipe-art{background:#d8caa9}
+.screen-welcome .story-card:focus-visible,.table-recipe-card:focus-visible{outline:2px solid #a95d3d;outline-offset:3px}
+@media(hover:hover){.table-recipe-card:hover .table-recipe-art img{transform:scale(1.045)}}
+
+/* Keep the utility controls comfortably above the iPhone home indicator. */
+@media(max-width:700px){
+ .site-shell{grid-template-rows:46px minmax(0,1fr) calc(48px + env(safe-area-inset-bottom,0px))}
+ .site-shell>footer.site-footer{min-height:calc(48px + env(safe-area-inset-bottom,0px));height:auto;padding:3px max(10px,env(safe-area-inset-right,0px)) calc(3px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));gap:7px}
+ .site-shell.has-music>footer.site-footer{padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px))}
+ .site-shell.music-expanded{grid-template-rows:46px minmax(0,1fr) auto}
+ .site-shell.music-expanded>footer.site-footer{padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))}
+ .footer-brand .old-lore-toggle{min-width:32px;min-height:36px}
+ .footer-links{justify-content:center;gap:clamp(2px,1.5vw,9px);min-width:0}
+ .footer-links button,.footer-links a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:4px 3px;font-size:clamp(8px,2.1vw,10px);line-height:1.15;text-align:center;white-space:normal;touch-action:manipulation}
+ .theme-toggle{min-height:36px;padding:5px 7px;font-size:9px;touch-action:manipulation}
+ .footer-music-slot{align-self:center}
+}
+
+/* Recipe cards read as a clear path from image to dish to practical details. */
+.screen-welcome .recipe-story-card{overflow:hidden}
+.screen-welcome .recipe-story-card>.card-art{border-radius:8px;aspect-ratio:1;box-shadow:0 5px 16px #293b2a24}
+.screen-welcome .recipe-story-card .card-body>.eyebrow{color:#925336;font-weight:800;letter-spacing:.075em;text-transform:uppercase}
+.screen-welcome .recipe-story-card .recipe-card-quick{width:max-content;max-width:100%;margin:5px 0 4px;padding:5px 8px;border:1px solid #d7ddcf;border-radius:5px;background:#edf1e8;color:#3e5844;font-variant-numeric:tabular-nums}
+.screen-welcome .recipe-story-card .recipe-card-ingredients{color:#596a5c}
+.screen-welcome .recipe-story-card .recipe-card-source{padding-top:5px;border-top:1px solid #e1e2d7}
+.screen-welcome .recipe-story-card .card-bottom{align-items:center;gap:6px}
+.screen-welcome .recipe-story-card .card-roots-link{flex:none;padding:5px 7px;border-radius:4px;background:#e8eee4;color:#365642;font-weight:800}
+.site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-quick{border-color:#708473;background:#344b42;color:#e8eede}
+.site-shell.moonlight .screen-welcome .recipe-story-card .recipe-card-source{border-color:#6d7b70}
+.site-shell.moonlight .screen-welcome .recipe-story-card .card-roots-link{background:#526b57;color:#fff2db}
+@media(max-width:700px){
+ .screen-welcome .recipe-story-card .recipe-card-quick{padding:4px 6px;margin:3px 0;font-size:8px}
+ .screen-welcome .recipe-story-card .card-roots-link{padding:4px 5px}
+}
+
+/* Make the foodways route legible at a glance. */
+.walkthrough-route{gap:3px}
+.walkthrough-route li:not(:last-child)::after{top:11px;left:24px;height:2px;background:#d8dccc}
+.walkthrough-route li.complete:not(:last-child)::after{background:#7d9875}
+.walkthrough-route li>span{width:23px;height:23px;font-size:8px;box-shadow:0 2px 5px #263b2b16}
+.walkthrough-route li.current>span{box-shadow:0 0 0 4px #b8674325,0 3px 10px #8f553b35}
+.walkthrough-route li>small{letter-spacing:.055em}
+@media(max-width:700px){.walkthrough-route li:not(:last-child)::after{top:10px;left:21px}.walkthrough-route li>span{width:21px;height:21px}.walkthrough-route li>small{font-size:7px}}
+
+/* Give the embedded phone view room for readable recipe copy. */
+@media(max-width:700px){
+ .screen-welcome .story-grid{grid-auto-rows:minmax(220px,auto)}
+ .screen-welcome .story-card{padding:10px 12px 9px}
+ .screen-welcome .story-card>.card-art{width:min(100%,90px)}
+ .screen-welcome .story-card .card-body>.eyebrow{font-size:8px;line-height:1.25}
+ .screen-welcome .story-card .card-body>strong{font-size:clamp(18px,5vw,22px);line-height:1.12}
+ .screen-welcome .recipe-story-card .card-description{font-size:11px;line-height:1.4}
+ .screen-welcome .recipe-story-card .recipe-card-quick,.screen-welcome .recipe-story-card .recipe-card-ingredients{font-size:9px;line-height:1.3}
+ .screen-welcome .recipe-story-card .recipe-card-source,.screen-welcome .recipe-story-card .card-bottom{font-size:8px;line-height:1.3}
+}

@@ -21,10 +21,10 @@ The app uses a fixed viewport layout, sourced editorial cards, state and city se
 
 The SDK calls `sdk.actions.ready()` inside a Mini App and uses `sdk.actions.composeCast()` for in-app sharing. Production builds generate the current `fc:miniapp` embed tag and a manifest at `/.well-known/farcaster.json`.
 
-1. Choose a stable HTTPS origin. The domain must match the Farcaster Mini App registration.
-2. Use [Farcaster Developer Tools](https://farcaster.xyz/~/developers/mini-apps/manifest) to generate the signed `accountAssociation` for that domain.
-3. Set `APP_URL` and `FARCASTER_ACCOUNT_ASSOCIATION` in the deployment environment. For local builds, the generator also reads these values from the ignored `.env.local` file; `FARCASTER_ACCOUNT_ASSOCIATION_B64` is supported for JSON that is awkward to quote in dotenv files.
-4. Run `npm run art && npm run build:miniapp`, deploy `dist/` at that origin, then validate the manifest and embed with the [Mini App Debug Tool](https://farcaster.xyz/~/developers/mini-apps).
+1. Keep the production origin at `https://shoreseason.vercel.app`; the signed association is tied to that exact domain.
+2. The production association is included in `scripts/miniapp-config.mjs`, so hosted builds do not depend on the ignored `.env.local` file. The generator checks that its signed domain matches `APP_URL` or Vercel’s production URL and stops with a clear error if they differ.
+3. If the production domain changes, generate a new signed `accountAssociation` in [Farcaster Developer Tools](https://farcaster.xyz/~/developers/mini-apps/manifest) and update the generator’s `defaultAssociation`. `APP_URL` and either association environment variable still override the local default.
+4. Run `npm run build:miniapp`, deploy `dist/` at that origin, then validate the manifest and embed with the [Mini App Debug Tool](https://farcaster.xyz/~/developers/mini-apps).
 
 Example for PowerShell:
 

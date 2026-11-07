@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Illustrated modern smoked fish, corn, and squash pot">
+  <defs><linearGradient id="a" x2="0" y2="1"><stop stop-color="#e4c28c"/><stop offset="1" stop-color="#7da69b"/></linearGradient><linearGradient id="b" x2="0" y2="1"><stop stop-color="#b6c4ad"/><stop offset="1" stop-color="#5e806f"/></linearGradient><linearGradient id="c" x2="0" y2="1"><stop stop-color="#e6ce9d"/><stop offset="1" stop-color="#728d79"/></linearGradient></defs>
+  <path fill="url(#a)" d="M0 0h400v400H0z"/><path fill="url(#b)" d="M400 0h400v400H400z"/><path fill="url(#c)" d="M800 0h400v400H800z"/>
+  <g fill="#f6e3b2" opacity=".72"><circle cx="325" cy="65" r="41"/><circle cx="728" cy="70" r="36"/><circle cx="1082" cy="67" r="40"/></g>
+  <g fill="none" stroke="#426f68" stroke-width="9" stroke-linecap="round"><path d="M0 287q49-35 98 0t98 0 98 0 106 0M400 316q46-33 92 0t92 0 92 0 124 0M800 291q50-38 100 0t100 0 100 0 100 0"/></g>
+  <g fill="#d3974b"><path d="M78 202q42-74 84 0-42 80-84 0"/><path d="M153 203q42-76 84 0-42 81-84 0"/></g>
+  <g fill="#4b6658"><path d="M90 180q-8-40 27-48 20 35-27 48m76 15q1-41 37-44 15 37-37 44m-19 35q-34-24-16-53 33 13 16 53"/></g>
+  <g fill="#f2e3c7" stroke="#74553d" stroke-width="7"><path d="M462 218h270l-25 104q-109 45-220 0z"/><path d="M464 218q135 55 266 0" fill="#bd7d4e"/><path d="M862 217h270l-25 104q-109 45-220 0z"/><path d="M864 217q135 55 266 0" fill="#c4834d"/></g>
+  <g fill="#e0b64e"><circle cx="508" cy="238" r="15"/><circle cx="560" cy="274" r="14"/><circle cx="629" cy="238" r="15"/><circle cx="684" cy="274" r="14"/><circle cx="908" cy="239" r="15"/><circle cx="963" cy="275" r="14"/><circle cx="1030" cy="239" r="15"/><circle cx="1086" cy="274" r="14"/></g>
+  <g fill="#d18b4f"><path d="M531 265q22-28 44 0l-22 24z"/><path d="M646 235q22-28 44 0l-22 24z"/><path d="M931 265q22-28 44 0l-22 24z"/><path d="M1047 235q22-28 44 0l-22 24z"/></g>
+  <g fill="#737d59"><path d="M583 215q-10-36 18-45 19 30-18 45m54 72q8-37 37-33 5 30-37 33m336-73q-10-36 18-45 19 30-18 45m55 72q8-37 37-33 5 30-37 33"/></g>
+  <g fill="#57483c"><path d="M548 222q31-29 62 0l-31 15z"/><path d="M965 222q31-29 62 0l-31 15z"/></g>
+</svg>

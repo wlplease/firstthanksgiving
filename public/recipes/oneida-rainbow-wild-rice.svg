@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" role="img" aria-label="Illustrated Oneida Rainbow Wild Rice preparation">
+  <defs><linearGradient id="a" x2="0" y2="1"><stop stop-color="#d8c9a4"/><stop offset="1" stop-color="#899b7d"/></linearGradient><linearGradient id="b" x2="0" y2="1"><stop stop-color="#aabf9d"/><stop offset="1" stop-color="#637b65"/></linearGradient><linearGradient id="c" x2="0" y2="1"><stop stop-color="#e5c994"/><stop offset="1" stop-color="#a26b50"/></linearGradient></defs>
+  <path fill="url(#a)" d="M0 0h400v400H0z"/><path fill="url(#b)" d="M400 0h400v400H400z"/><path fill="url(#c)" d="M800 0h400v400H800z"/>
+  <g fill="#f7e5b6" opacity=".7"><circle cx="325" cy="67" r="38"/><circle cx="730" cy="66" r="35"/><circle cx="1083" cy="70" r="41"/></g>
+  <g fill="none" stroke="#4c7153" stroke-width="8" stroke-linecap="round"><path d="M0 322q50-38 100 0t100 0 100 0 100 0M400 327q50-36 100 0t100 0 100 0 100 0M800 324q50-38 100 0t100 0 100 0 100 0"/></g>
+  <g fill="#d88743"><path d="M70 222q45-86 91 0-45 85-91 0"/><path d="M132 220q45-83 90 0-45 84-90 0"/><path d="M208 223q43-77 85 0-42 78-85 0"/></g>
+  <g fill="#e7bd56"><circle cx="493" cy="226" r="18"/><circle cx="547" cy="252" r="17"/><circle cx="611" cy="224" r="18"/><circle cx="674" cy="255" r="17"/><circle cx="899" cy="230" r="17"/><circle cx="956" cy="252" r="17"/><circle cx="1019" cy="224" r="18"/><circle cx="1081" cy="256" r="17"/></g>
+  <g fill="#a94f42"><circle cx="527" cy="281" r="18"/><circle cx="651" cy="217" r="16"/><circle cx="929" cy="282" r="18"/><circle cx="1060" cy="218" r="16"/></g>
+  <g fill="#f1e4c9" stroke="#66503b" stroke-width="7"><path d="M456 210h280l-28 112q-112 42-224 0z"/><path d="M458 210q139 55 276 0" fill="#b89a67"/><path d="M856 210h280l-28 112q-112 42-224 0z"/><path d="M858 210q139 55 276 0" fill="#b98e5b"/></g>
+  <g fill="#738764"><path d="M575 211q-15-43 19-53 23 33-19 53m61 79q7-39 38-35 7 32-38 35m331-78q-15-43 19-53 23 33-19 53m64 79q7-39 38-35 7 32-38 35"/></g>
+</svg>
